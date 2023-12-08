@@ -23,9 +23,9 @@ class AdventOfCode
         attr_reader :game_id
 
         def initialize(line)
+          init_colours
           matches = line.match(/Game (?<game_id>\d+):/)
           @game_id = matches[:game_id].to_i
-          @colours = { red: 0, green: 0, blue: 0 }
           parse_game line.delete_prefix matches[0]
         end
 
@@ -34,6 +34,10 @@ class AdventOfCode
         end
 
         private
+
+        def init_colours
+          @colours = MAX.keys.to_h { |k| [k, 0] }
+        end
 
         def parse_game(game)
           game.split(";").each { |set| parse_set set }
