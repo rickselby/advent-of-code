@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require "advent_of_code/y2023/day1"
-
-describe AdventOfCode::Y2023::Day1 do
+describe AdventOfCode::Y2023::Day1a do
   describe "result" do
     subject { described_class.new(lines).result }
 
