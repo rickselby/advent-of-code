@@ -59,6 +59,7 @@ GEM
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
     unicode-display_width (2.5.0)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   x86_64-linux
@@ -68,6 +69,7 @@ DEPENDENCIES
   rspec (~> 3.12)
   rubocop-rickselby (~> 0.5)
   rubocop-rspec (~> 2.25)
+  zeitwerk (~> 2.6)
 
 BUNDLED WITH
    2.4.22
