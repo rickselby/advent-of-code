@@ -23,6 +23,10 @@ class AdventOfCode
           matches.zero? ? 0 : 2**(matches - 1)
         end
 
+        def matches
+          winning_numbers.size
+        end
+
         private
 
         def parse_card(numbers)
@@ -33,10 +37,6 @@ class AdventOfCode
 
         def winning_numbers
           @your_numbers.intersection @game_numbers
-        end
-
-        def matches
-          winning_numbers.size
         end
       end
     end
