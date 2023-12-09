@@ -26,17 +26,8 @@ class AdventOfCode
         @maps[map].each do |m|
           return change_range(range, m[:diff]) if m[:range].cover? range
 
-          if m[:range].cover? range.begin
-            range_to_translate = range.begin...m[:range].end
-            other_range = m[:range].end...range.end
-            # p "#{range} => #{range_to_translate}, #{other_range}"
-            return [change_range(range_to_translate, m[:diff]), translate_range(map, other_range)].flatten
-          end
-
-          if m[:range].cover? range.last(1).first
-            range_to_translate = m[:range].begin...range.end
-            other_range = range.begin...m[:range].begin
-            return [change_range(range_to_translate, m[:diff]), translate_range(map, other_range)].flatten
+          if m[:range].cover?(range.begin) || m[:range].cover?(range.last(1).first)
+            return new_ranges m[:diff], map, *split_ranges(m, range)
           end
         end
         range
@@ -44,6 +35,18 @@ class AdventOfCode
 
       def change_range(range, diff)
         (range.begin + diff)...(range.end + diff)
+      end
+
+      def split_ranges(map_detail, range)
+        if map_detail[:range].cover? range.begin
+          [range.begin...map_detail[:range].end, map_detail[:range].end...range.end]
+        else
+          [map_detail[:range].begin...range.end, range.begin...map_detail[:range].begin]
+        end
+      end
+
+      def new_ranges(diff, map, range_to_translate, other_range)
+        [change_range(range_to_translate, diff), translate_range(map, other_range)].flatten
       end
     end
   end

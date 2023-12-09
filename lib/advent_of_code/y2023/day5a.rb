@@ -25,7 +25,7 @@ class AdventOfCode
       private
 
       def seeds
-        @seeds.map &:to_i
+        @seeds.map(&:to_i)
       end
 
       def read_file
@@ -33,20 +33,20 @@ class AdventOfCode
         @input.lines.each_with_index do |line, index|
           if index.zero?
             read_first_line line
-            next
+          else
+            map = read_line line, map
           end
-
-          line.strip!
-
-          next if line.empty?
-
-          if line.end_with? "map:"
-            map = line.split[0].to_sym
-            next
-          end
-
-          update_map map, line
         end
+      end
+
+      def read_line(line, map)
+        line.strip!
+
+        return map if line.empty?
+        return line.split[0].to_sym if line.end_with? "map:"
+
+        update_map map, line
+        map
       end
 
       def read_first_line(line)
@@ -57,9 +57,9 @@ class AdventOfCode
         values = line.split.map(&:to_i)
         @maps[map] ||= []
         @maps[map].append({
-          range: values[1]...(values[1] + values[2]),
-          diff: values[0] - values[1]
-        })
+                            range: values[1]...(values[1] + values[2]),
+                            diff: values[0] - values[1]
+                          })
       end
 
       def translate_value(map, value)
