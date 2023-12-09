@@ -19,6 +19,7 @@ class AdventOfCode
           parse_card line.delete_prefix matches[0]
         end
 
+        # 1 point for 1 match; 2 for 2, 4 for 3, 8 for 4, etc.
         def points
           matches.zero? ? 0 : 2**(matches - 1)
         end

@@ -16,6 +16,7 @@ class AdventOfCode
 
       def result
         values = seeds
+        # Step through each map and update each value
         MAPS.each do |map|
           values = values.map { |v| translate_value map, v }
         end
@@ -34,14 +35,15 @@ class AdventOfCode
           if index.zero?
             read_first_line line
           else
-            map = read_line line, map
+            map = read_line line.strip, map
           end
         end
       end
 
+      # Read the line and return the current map.
+      # The line may change which map we are working with,
+      # or it may define new ranges for the current map.
       def read_line(line, map)
-        line.strip!
-
         return map if line.empty?
         return line.split[0].to_sym if line.end_with? "map:"
 
@@ -49,19 +51,24 @@ class AdventOfCode
         map
       end
 
+      # First line contains the list of seeds
       def read_first_line(line)
         @seeds = line.split(":")[1].strip.split
       end
 
+      # Save the range of numbers that do not map directly, and the difference (+ or -) to the mapped numbers
       def update_map(map, line)
         values = line.split.map(&:to_i)
         @maps[map] ||= []
-        @maps[map].append({
-                            range: values[1]...(values[1] + values[2]),
-                            diff: values[0] - values[1]
-                          })
+        @maps[map].append(
+          {
+            range: values[1]...(values[1] + values[2]),
+            diff: values[0] - values[1]
+          }
+        )
       end
 
+      # Step through each range for the given map and change the value if required
       def translate_value(map, value)
         @maps[map].each do |m|
           next unless m[:range].include? value

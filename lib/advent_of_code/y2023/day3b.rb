@@ -5,6 +5,7 @@ class AdventOfCode
     # https://adventofcode.com/2023/day/3
     class Day3b < Day3a
       def result
+        # A list of asterisk coordinates and any numbers that are adjacent
         @possible_gear_counts = {}
         look_for_gears
         actual_gears.values.sum { |numbers| numbers.inject(:*) }
@@ -24,6 +25,7 @@ class AdventOfCode
         @possible_gear_counts.select { |_, numbers| numbers.size == 2 }
       end
 
+      # Find numbers and see if they are near asterisks
       def check_for_data(line, row, index = -1)
         match_data = line.match(/\d+/, index + 1)
         return if match_data.nil?
@@ -39,6 +41,7 @@ class AdventOfCode
         @possible_gears ||= load_possible_gears
       end
 
+      # Get a list of coordinates of all asterisks in the grid
       def load_possible_gears
         symbols = []
         lines.each_with_index do |line, row|
@@ -53,8 +56,8 @@ class AdventOfCode
         symbols
       end
 
+      # Check if there is an asterisk next to this number
       def check_for_possible_gears(number_row, col1, col2, number)
-        # build a list of coords where we need a symbol
         coords = []
         (number_row - 1..number_row + 1).each do |row|
           (col1 - 1..col2 + 1).each do |col|
@@ -65,6 +68,7 @@ class AdventOfCode
         possible_gears.intersection(coords).each { |coordinates| add_number coordinates, number }
       end
 
+      # Mark that a number is adjacent to an asterisk
       def add_number(coordinates, number)
         key = coordinates.join ":"
 

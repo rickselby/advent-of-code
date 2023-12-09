@@ -24,6 +24,7 @@ class AdventOfCode
 
       private
 
+      # Build an indexed list of matches of all strings / numbers, so we can find the first and last matches
       def get_matches(line)
         matches = {}
         search_strings.each do |search|

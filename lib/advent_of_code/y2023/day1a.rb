@@ -9,10 +9,11 @@ class AdventOfCode
       end
 
       def result
-        @input.lines.compact.sum { |line| value_for_line line }
+        @input.lines.sum { |line| value_for_line line }
       end
 
       def value_for_line(line)
+        # Find all digits in the string
         matches = line.scan(/\d/)
 
         "#{matches.first}#{matches.last}".to_i

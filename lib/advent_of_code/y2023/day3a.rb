@@ -38,10 +38,12 @@ class AdventOfCode
         check_for_data line, row, finish, numbers
       end
 
+      # Coordinates of all symbols
       def symbols
         @symbols ||= load_symbols
       end
 
+      # Build an array of coordinates of all symbols
       def load_symbols
         symbols = []
         lines.each_with_index do |line, row|
@@ -56,8 +58,8 @@ class AdventOfCode
         symbols
       end
 
+      # Check there is a symbol in the coordinates around the number
       def valid?(number_row, col1, col2)
-        # build a list of coords where we need a symbol
         coords = []
         (number_row - 1..number_row + 1).each do |row|
           (col1 - 1..col2 + 1).each do |col|
