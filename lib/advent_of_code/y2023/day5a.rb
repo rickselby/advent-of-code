@@ -15,7 +15,7 @@ class AdventOfCode
                 temperature-to-humidity humidity-to-location].freeze
 
       def result
-        values = @seeds.map(&:to_i)
+        values = seeds
         MAPS.each do |map|
           values = values.map { |v| translate_value map, v }
         end
@@ -23,6 +23,10 @@ class AdventOfCode
       end
 
       private
+
+      def seeds
+        @seeds.map &:to_i
+      end
 
       def read_file
         map = nil
