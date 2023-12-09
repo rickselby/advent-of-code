@@ -7,16 +7,17 @@ class AdventOfCode
       def initialize(input)
         @input = input
         @seeds = []
-        @maps = Hash.new { Hash.new { |_, key| key } }
+        @maps = {}
         read_file
       end
 
-      MAPS = %w[seed-to-soil soil-to-fertilizer fertilizer-to-water water-to-light light-to-temperature temperature-to-humidity humidity-to-location].freeze
+      MAPS = %i[seed-to-soil soil-to-fertilizer fertilizer-to-water water-to-light light-to-temperature
+                temperature-to-humidity humidity-to-location].freeze
 
       def result
         values = @seeds.map(&:to_i)
         MAPS.each do |map|
-          values = values.map { |v| @maps[map][v] }
+          values = values.map { |v| translate_value map, v }
         end
         values.min
       end
@@ -36,8 +37,7 @@ class AdventOfCode
           next if line.empty?
 
           if line.end_with? "map:"
-            map = line.split[0]
-            p map
+            map = line.split[0].to_sym
             next
           end
 
@@ -49,14 +49,22 @@ class AdventOfCode
         @seeds = line.split(":")[1].strip.split
       end
 
-      def update_map(map_name, line)
-        map = @maps[map_name]
+      def update_map(map, line)
         values = line.split.map(&:to_i)
-        (0...values[2]).each do |v|
-          map[values[1] + v] = values[0] + v
-        end
+        @maps[map] ||= []
+        @maps[map].append({
+          range: values[1]...(values[1] + values[2]),
+          diff: values[0] - values[1]
+        })
+      end
 
-        @maps[map_name] = map
+      def translate_value(map, value)
+        @maps[map].each do |m|
+          next unless m[:range].include? value
+
+          return value + m[:diff]
+        end
+        value
       end
     end
   end
