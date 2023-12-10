@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Y2023::Day6b do
+describe AdventOfCode::Year2023::Day6::Part2 do
   describe "result" do
-    subject { described_class.new(lines).result }
+    subject { described_class.new(data).result }
 
-    let(:lines) do
-      <<~RACES
+    let(:data) do
+      <<~DATA
         Time:      7  15   30
         Distance:  9  40  200
-      RACES
+      DATA
     end
 
     it { is_expected.to eq 71_503 }
