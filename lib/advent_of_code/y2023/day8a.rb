@@ -10,19 +10,22 @@ class AdventOfCode
       end
 
       def result
-        node = "AAA"
+        count_for_node "AAA", "ZZZ"
+      end
+
+      private
+
+      def count_for_node(node, ends_with)
         count = 0
         @step = 0
         loop do
           count += 1
           node = @nodes[node][next_direction]
 
-          break if node == "ZZZ"
+          break if node.end_with? ends_with
         end
         count
       end
-
-      private
 
       def parse_input(input)
         input.lines.each_with_index do |line, index|
@@ -42,7 +45,7 @@ class AdventOfCode
       end
 
       def parse_line(line)
-        matches = line.match(/(?<source>[A-Z]+) = \((?<left>[A-Z]+), (?<right>[A-Z]+)\)/)
+        matches = line.match(/(?<source>.+) = \((?<left>.+), (?<right>.+)\)/)
         @nodes[matches[:source]] = { "L" => matches[:left], "R" => matches[:right] }
       end
 
