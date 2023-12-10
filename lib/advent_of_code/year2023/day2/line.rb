@@ -1,25 +1,16 @@
 # frozen_string_literal: true
 
 class AdventOfCode
-  module Y2023
-    # https://adventofcode.com/2023/day/2
-    class Day2a
-      MAX = {
-        red: 12,
-        green: 13,
-        blue: 14
-      }.freeze
-
-      def initialize(input)
-        @input = input
-      end
-
-      def result
-        @input.lines.map { |l| Line.new l }.select(&:valid?).sum(&:game_id)
-      end
-
+  module Year2023
+    module Day2
       # A single line of the input, broken down
       class Line
+        MAX = {
+          red: 12,
+          green: 13,
+          blue: 14
+        }.freeze
+
         attr_reader :game_id
 
         def initialize(line)
@@ -31,6 +22,10 @@ class AdventOfCode
 
         def valid?
           MAX.keys.all? { |k| @colours[k] <= MAX[k] }
+        end
+
+        def power
+          @colours.values.inject :*
         end
 
         private
