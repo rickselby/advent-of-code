@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Y2023::Day8a do
+describe AdventOfCode::Year2023::Day8::Part1 do
   describe "result" do
-    subject { described_class.new(lines).result }
+    subject { described_class.new(data).result }
 
     context "with one given example" do
-      let(:lines) do
-        <<~NODES
+      let(:data) do
+        <<~DATA
           RL
 
           AAA = (BBB, CCC)
@@ -16,21 +16,21 @@ describe AdventOfCode::Y2023::Day8a do
           EEE = (EEE, EEE)
           GGG = (GGG, GGG)
           ZZZ = (ZZZ, ZZZ)
-        NODES
+        DATA
       end
 
       it { is_expected.to eq 2 }
     end
 
     context "with the other given example" do
-      let(:lines) do
-        <<~NODES
+      let(:data) do
+        <<~DATA
           LLR
 
           AAA = (BBB, BBB)
           BBB = (AAA, ZZZ)
           ZZZ = (ZZZ, ZZZ)
-        NODES
+        DATA
       end
 
       it { is_expected.to eq 6 }
