@@ -1,21 +1,15 @@
 # frozen_string_literal: true
 
 class AdventOfCode
-  module Y2023
-    # https://adventofcode.com/2023/day/4
-    class Day4a
-      def initialize(input)
-        @input = input
-      end
-
-      def result
-        @input.lines.map { |l| Card.new l }.sum(&:points)
-      end
-
-      # Each line represents a card
+  module Year2023
+    module Day4
+      # Each line represents a scratch card
       class Card
+        attr_reader :number
+
         def initialize(line)
-          matches = line.match(/Card\s+\d+:/)
+          matches = line.match(/Card\s+(?<number>\d+):/)
+          @number = matches[:number].to_i
           parse_card line.delete_prefix matches[0]
         end
 
@@ -26,6 +20,10 @@ class AdventOfCode
 
         def matches
           winning_numbers.size
+        end
+
+        def winner?
+          !winning_numbers.empty?
         end
 
         private
