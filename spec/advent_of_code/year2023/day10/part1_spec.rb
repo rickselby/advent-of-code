@@ -1,25 +1,25 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Y2023::Day10a do
+describe AdventOfCode::Year2023::Day10::Part1 do
   describe "result" do
-    subject { described_class.new(lines).result }
+    subject { described_class.new(data).result }
 
     context "with one given example" do
-      let(:lines) do
-        <<~MAP
+      let(:data) do
+        <<~DATA
           -L|F7
           7S-7|
           L|7||
           -L-J|
           L|-JF
-        MAP
+        DATA
       end
 
       it { is_expected.to eq 4 }
     end
 
     context "with the other given example" do
-      let(:lines) do
+      let(:data) do
         <<~MAP
           7-F7-
           .FJ|7
@@ -33,38 +33,38 @@ describe AdventOfCode::Y2023::Day10a do
     end
 
     data = []
-    data << <<~MAP
+    data << <<~DATA
       .....
       .S-7.
       .|.|.
       .L-J.
       .....
-    MAP
-    data << <<~MAP
+    DATA
+    data << <<~DATA
       .....
       .F-S.
       .|.|.
       .L-J.
       .....
-    MAP
-    data << <<~MAP
+    DATA
+    data << <<~DATA
       .....
       .F-7.
       .|.|.
       .S-J.
       .....
-    MAP
-    data << <<~MAP
+    DATA
+    data << <<~DATA
       .....
       .F-7.
       .|.|.
       .L-S.
       .....
-    MAP
+    DATA
 
     data.each do |map|
       context "with map #{map}" do
-        let(:lines) { map }
+        let(:data) { map }
 
         it { is_expected.to eq 4 }
       end

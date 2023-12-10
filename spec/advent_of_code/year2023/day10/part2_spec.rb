@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Y2023::Day10b do
+describe AdventOfCode::Year2023::Day10::Part2 do
   describe "result" do
-    subject { described_class.new(lines).result }
+    subject { described_class.new(data).result }
 
     context "with one given example" do
-      let(:lines) do
-        <<~MAP
+      let(:data) do
+        <<~DATA
           ...........
           .S-------7.
           .|F-----7|.
@@ -16,15 +16,15 @@ describe AdventOfCode::Y2023::Day10b do
           .|..|.|..|.
           .L--J.L--J.
           ...........
-        MAP
+        DATA
       end
 
       it { is_expected.to eq 4 }
     end
 
     context "with the second given example" do
-      let(:lines) do
-        <<~MAP
+      let(:data) do
+        <<~DATA
           .F----7F7F7F7F-7....
           .|F--7||||||||FJ....
           .||.FJ||||||||L7....
@@ -35,15 +35,15 @@ describe AdventOfCode::Y2023::Day10b do
           .....|FJLJ|FJ|F7|.LJ
           ....FJL-7.||.||||...
           ....L---J.LJ.LJLJ...
-        MAP
+        DATA
       end
 
       it { is_expected.to eq 8 }
     end
 
     context "with the third given example" do
-      let(:lines) do
-        <<~MAP
+      let(:data) do
+        <<~DATA
           FF7FSF7F7F7F7F7F---7
           L|LJ||||||||||||F--J
           FL-7LJLJ||||||LJL-77
@@ -54,7 +54,7 @@ describe AdventOfCode::Y2023::Day10b do
           7-L-JL7||F7|L7F-7F7|
           L.L7LFJ|||||FJL7||LJ
           L7JLJL-JLJLJL--JLJ.L
-        MAP
+        DATA
       end
 
       it { is_expected.to eq 10 }

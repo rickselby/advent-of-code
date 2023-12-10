@@ -34,13 +34,13 @@ describe AdventOfCode::Year2023::Day7::Part1 do
     subject { described_class.new(nil).hand_type(hand) }
 
     data = {
-      "11111" => AdventOfCode::Y2023::Day7a::HANDS[:five_of_a_kind],
-      "11112" => AdventOfCode::Y2023::Day7a::HANDS[:four_of_a_kind],
-      "11222" => AdventOfCode::Y2023::Day7a::HANDS[:full_house],
-      "11123" => AdventOfCode::Y2023::Day7a::HANDS[:three_of_a_kind],
-      "11223" => AdventOfCode::Y2023::Day7a::HANDS[:two_pair],
-      "11234" => AdventOfCode::Y2023::Day7a::HANDS[:one_pair],
-      "12345" => AdventOfCode::Y2023::Day7a::HANDS[:high_card]
+      "11111" => AdventOfCode::Year2023::Day7::Part1::HANDS[:five_of_a_kind],
+      "11112" => AdventOfCode::Year2023::Day7::Part1::HANDS[:four_of_a_kind],
+      "11222" => AdventOfCode::Year2023::Day7::Part1::HANDS[:full_house],
+      "11123" => AdventOfCode::Year2023::Day7::Part1::HANDS[:three_of_a_kind],
+      "11223" => AdventOfCode::Year2023::Day7::Part1::HANDS[:two_pair],
+      "11234" => AdventOfCode::Year2023::Day7::Part1::HANDS[:one_pair],
+      "12345" => AdventOfCode::Year2023::Day7::Part1::HANDS[:high_card]
     }
 
     data.each do |hand, type|
