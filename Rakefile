@@ -47,7 +47,7 @@ task :create, [:year, :day, :part] do |_, args|
   FileUtils.mkdir_p spec_dir
   spec_file = "#{spec_dir}/part#{args[:part]}_spec.rb"
   File.write spec_file, format(SPEC_TEMPLATE, args)
-  `git add #{data_file} #{class_file} #{data_file}`
+  `git add #{data_file} #{class_file} #{spec_file}`
 end
 
 CLASS_TEMPLATE = <<~CODE_TEMPLATE

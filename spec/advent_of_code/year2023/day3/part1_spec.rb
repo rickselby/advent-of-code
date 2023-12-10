@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Y2023::Day3a do
+describe AdventOfCode::Year2023::Day3::Part1 do
   describe "result" do
-    subject { described_class.new(lines).result }
+    subject { described_class.new(data).result }
 
     context "with the given example" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           467..114..
           ...*......
           ..35..633.
@@ -17,75 +17,75 @@ describe AdventOfCode::Y2023::Day3a do
           ......755.
           ...$.*....
           .664.598..
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 4361 }
     end
 
     context "with numbers on the edge" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           .1.
           1.1
           .1.
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 0 }
     end
 
     context "with numbers on the edge to include" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           .1.
           1*1
           .1.
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 4 }
     end
 
     context "with a number that wraps" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           ...
           .*1
           1..
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 2 }
     end
 
     context "with an example from reddit" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           ....
           .4..
           ..*.
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 4 }
     end
 
     context "with another example from reddit" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           ....................
           ..-52..52-..52..52..
           ..................-.
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 156 }
     end
 
     context "with yet another example from reddit" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           12.......*..
           +.........34
           .......-12..
@@ -98,27 +98,27 @@ describe AdventOfCode::Y2023::Day3a do
           2.2......12.
           .*.........*
           1.1..503+.56
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 925 }
     end
 
     context "with more reddit samples" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           .2.
           .*.
           585
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 587 }
     end
 
     context "with yet more reddit samples" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           ....11
           ......
           ....22
@@ -128,18 +128,18 @@ describe AdventOfCode::Y2023::Day3a do
           ......
           +55.55
           .....+
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 187 }
     end
 
     context "with a sample of my own" do
-      let(:lines) do
-        <<~SCHEMATIC
+      let(:data) do
+        <<~DATA
           .2..
           ...*
-        SCHEMATIC
+        DATA
       end
 
       it { is_expected.to eq 0 }
