@@ -1,29 +1,29 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Y2023::Day7a do
+describe AdventOfCode::Year2023::Day7::Part1 do
   describe "result" do
-    subject { described_class.new(lines).result }
+    subject { described_class.new(data).result }
 
     context "with the given example" do
-      let(:lines) do
-        <<~HANDS
+      let(:data) do
+        <<~DATA
           32T3K 765
           T55J5 684
           KK677 28
           KTJJT 220
           QQQJA 483
-        HANDS
+        DATA
       end
 
       it { is_expected.to eq 6440 }
     end
 
     context "with a weirdness in the output" do
-      let(:lines) do
-        <<~HANDS
+      let(:data) do
+        <<~DATA
           JTTTT 10
           3333J 20
-        HANDS
+        DATA
       end
 
       it { is_expected.to eq 40 }

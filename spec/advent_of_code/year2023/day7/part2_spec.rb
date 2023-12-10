@@ -1,22 +1,20 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Y2023::Day7b do
+describe AdventOfCode::Year2023::Day7::Part2 do
   describe "result" do
-    subject { described_class.new(lines).result }
+    subject { described_class.new(data).result }
 
-    context "with the given example" do
-      let(:lines) do
-        <<~HANDS
-          32T3K 765
-          T55J5 684
-          KK677 28
-          KTJJT 220
-          QQQJA 483
-        HANDS
-      end
-
-      it { is_expected.to eq 5905 }
+    let(:data) do
+      <<~DATA
+        32T3K 765
+        T55J5 684
+        KK677 28
+        KTJJT 220
+        QQQJA 483
+      DATA
     end
+
+    it { is_expected.to eq 5905 }
   end
 
   describe "hand_type" do
