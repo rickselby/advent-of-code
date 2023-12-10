@@ -41,11 +41,22 @@ class AdventOfCode
       # Find a pipe that connects to the starting position
       def first_coords
         row, col = @start
-        return [[row - 1, col], :north] if %w[| 7 F].include? @map[row - 1][col]
-        return [[row, col - 1], :east] if %w[- L F].include? @map[row][col - 1]
-        return [[row + 1, col], :south] if %w[| L J].include? @map[row + 1][col]
+        directions = start_directions
+        return [[row - 1, col], :north] if directions.include? :north
+        return [[row, col - 1], :west] if directions.include? :west
 
-        [[row, col + 1], :west]
+        # If neither north nor west are included, it must be "7" (south east)
+        [[row + 1, col], :south]
+      end
+
+      def start_directions
+        row, col = @start
+        directions = []
+        directions << :north if %w[| 7 F].include? @map.dig(row - 1, col)
+        directions << :east if %w[- J 7].include? @map.dig(row, col + 1)
+        directions << :south if %w[| L J].include? @map.dig(row + 1, col)
+        directions << :west if %w[- L F].include? @map.dig(row, col - 1)
+        directions
       end
 
       def next_move(coords, direction_entered)
@@ -53,7 +64,7 @@ class AdventOfCode
         [next_coords(coords, next_entered_direction), next_entered_direction]
       end
 
-      def next_direction(coords, direction)
+      def next_direction(coords, direction) # rubocop:disable Metrics/CyclomaticComplexity
         case @map.dig(*coords)
         when "|", "-" then direction
         when "L" then direction == :south ? :east : :north

@@ -31,5 +31,43 @@ describe AdventOfCode::Y2023::Day10a do
 
       it { is_expected.to eq 8 }
     end
+
+    data = []
+    data << <<~MAP
+      .....
+      .S-7.
+      .|.|.
+      .L-J.
+      .....
+    MAP
+    data << <<~MAP
+      .....
+      .F-S.
+      .|.|.
+      .L-J.
+      .....
+    MAP
+    data << <<~MAP
+      .....
+      .F-7.
+      .|.|.
+      .S-J.
+      .....
+    MAP
+    data << <<~MAP
+      .....
+      .F-7.
+      .|.|.
+      .L-S.
+      .....
+    MAP
+
+    data.each do |map|
+      context "with map #{map}" do
+        let(:lines) { map }
+
+        it { is_expected.to eq 4 }
+      end
+    end
   end
 end
