@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Y2023::Day5b do
+describe AdventOfCode::Year2023::Day5::Part2 do
   describe "result" do
-    subject { described_class.new(lines).result }
+    subject { described_class.new(data).result }
 
-    let(:lines) do
-      <<~MAPS
+    let(:data) do
+      <<~DATA
         seeds: 79 14 55 13
 
         seed-to-soil map:
@@ -39,7 +39,7 @@ describe AdventOfCode::Y2023::Day5b do
         humidity-to-location map:
         60 56 37
         56 93 4
-      MAPS
+      DATA
     end
 
     it { is_expected.to eq 46 }
