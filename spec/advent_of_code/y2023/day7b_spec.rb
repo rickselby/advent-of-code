@@ -41,7 +41,7 @@ describe AdventOfCode::Y2023::Day7b do
       "11J22" => AdventOfCode::Y2023::Day7b::HANDS[:full_house],
       "11J23" => AdventOfCode::Y2023::Day7b::HANDS[:three_of_a_kind],
       "1JJ23" => AdventOfCode::Y2023::Day7b::HANDS[:three_of_a_kind],
-      "1J234" => AdventOfCode::Y2023::Day7b::HANDS[:one_pair],
+      "1J234" => AdventOfCode::Y2023::Day7b::HANDS[:one_pair]
     }
 
     data.each do |hand, type|
