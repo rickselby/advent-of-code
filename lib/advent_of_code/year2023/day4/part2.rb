@@ -19,10 +19,6 @@ class AdventOfCode
 
         private
 
-        def lines
-          @lines ||= @input.lines
-        end
-
         # Set up hash with one of each card
         def init_counts
           (1..lines.size).each { |n| @cards[n] = 1 }

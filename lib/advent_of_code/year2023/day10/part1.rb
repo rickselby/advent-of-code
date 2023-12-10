@@ -15,7 +15,7 @@ class AdventOfCode
         private
 
         def parse_map
-          @input.lines.each_with_index do |line, row|
+          lines.each_with_index do |line, row|
             line.chars.each_with_index do |char, col|
               @map[row] ||= {}
               @map[row][col] = char

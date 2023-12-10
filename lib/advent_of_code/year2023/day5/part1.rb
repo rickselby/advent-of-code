@@ -32,7 +32,7 @@ class AdventOfCode
 
         def read_file
           map = nil
-          @input.lines.each_with_index do |line, index|
+          lines.each_with_index do |line, index|
             if index.zero?
               read_first_line line
             else

@@ -16,7 +16,7 @@ class AdventOfCode
         }.freeze
 
         def result
-          parse_hands @input
+          parse_hands
           total = 0
           @hands.sort { |a, b| sort_hands a[:hand], b[:hand] }
                 .each_with_index { |hand, rank| total += (rank + 1) * hand[:bid] }
@@ -39,8 +39,8 @@ class AdventOfCode
 
         private
 
-        def parse_hands(input)
-          @hands = input.lines.map do |line|
+        def parse_hands
+          @hands = lines.map do |line|
             parts = line.split
             { hand: parts[0], bid: parts[1].to_i }
           end

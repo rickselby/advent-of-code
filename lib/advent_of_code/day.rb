@@ -10,5 +10,11 @@ class AdventOfCode
     def result
       raise "To implement"
     end
+
+    protected
+
+    def lines
+      @lines ||= @input.lines
+    end
   end
 end

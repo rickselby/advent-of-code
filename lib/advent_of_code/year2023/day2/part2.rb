@@ -6,7 +6,7 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/2
       class Part2 < Part1
         def result
-          @input.lines.map { |l| Line.new l }.sum(&:power)
+          lines.map { |l| Line.new l }.sum(&:power)
         end
       end
     end

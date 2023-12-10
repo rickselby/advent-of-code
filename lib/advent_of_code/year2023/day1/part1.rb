@@ -6,7 +6,7 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/1
       class Part1 < AdventOfCode::Day
         def result
-          @input.lines.sum { |line| value_for_line line }
+          lines.sum { |line| value_for_line line }
         end
 
         def value_for_line(line)

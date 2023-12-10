@@ -11,10 +11,6 @@ class AdventOfCode
 
         private
 
-        def lines
-          @lines ||= @input.lines
-        end
-
         def numbers
           numbers = []
           lines.each_with_index do |line, row|

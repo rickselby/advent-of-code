@@ -6,7 +6,7 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/4
       class Part1 < AdventOfCode::Day
         def result
-          @input.lines.map { |l| Card.new l }.sum(&:points)
+          lines.map { |l| Card.new l }.sum(&:points)
         end
       end
     end

@@ -6,9 +6,9 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/8
       class Part1 < AdventOfCode::Day
         def initialize(input)
-          super(nil)
+          super(input)
           @nodes = {}
-          parse_input input
+          parse_input
         end
 
         def result
@@ -29,8 +29,8 @@ class AdventOfCode
           count
         end
 
-        def parse_input(input)
-          input.lines.each_with_index do |line, index|
+        def parse_input
+          lines.each_with_index do |line, index|
             line.strip!
             next if line.empty?
 

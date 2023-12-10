@@ -6,7 +6,7 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/2
       class Part1 < AdventOfCode::Day
         def result
-          @input.lines.map { |l| Line.new l }.select(&:valid?).sum(&:game_id)
+          lines.map { |l| Line.new l }.select(&:valid?).sum(&:game_id)
         end
       end
     end
