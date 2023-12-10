@@ -1,17 +1,19 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Y2023::Day1b do
+describe AdventOfCode::Year2023::Day1::Part2 do
   describe "result" do
-    subject { described_class.new(lines).result }
+    subject { described_class.new(data).result }
 
-    let(:lines) do
-      "two1nine
-       eightwothree
-       abcone2threexyz
-       xtwone3four
-       4nineeightseven2
-       zoneight234
-       7pqrstsixteen"
+    let(:data) do
+      <<~DATA
+        two1nine
+        eightwothree
+        abcone2threexyz
+        xtwone3four
+        4nineeightseven2
+        zoneight234
+        7pqrstsixteen
+      DATA
     end
 
     it { is_expected.to eq 281 }
