@@ -13,6 +13,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.2, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.4.22, RVM: ruby-3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler-audit (v0.9.1, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.5.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.7.1, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.3, RVM: ruby-3.2.2) [gem]" level="application" />
@@ -37,6 +38,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rickselby (v0.7.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v2.25.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, RVM: ruby-3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="thor (v1.3.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v2.5.0, RVM: ruby-3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.6.12, RVM: ruby-3.2.2) [gem]" level="application" />
   </component>
@@ -44,6 +46,7 @@
     <option name="myRootTask">
       <RakeTaskImpl id="rake">
         <subtasks>
+          <RakeTaskImpl description="Create templates for a new solution" fullCommand="create[year,day,part]" id="create[year,day,part]" />
           <RakeTaskImpl description="Run RuboCop" fullCommand="rubocop" id="rubocop" />
           <RakeTaskImpl id="rubocop">
             <subtasks>
@@ -52,12 +55,10 @@
               <RakeTaskImpl description="" fullCommand="rubocop:auto_correct" id="auto_correct" />
             </subtasks>
           </RakeTaskImpl>
+          <RakeTaskImpl description="Run some code" fullCommand="run[year,day,part]" id="run[year,day,part]" />
           <RakeTaskImpl description="Run RSpec code examples" fullCommand="spec" id="spec" />
-          <RakeTaskImpl id="y2023">
-            <subtasks>
-              <RakeTaskImpl description="day 1 year 2023" fullCommand="y2023:day1" id="day1" />
-            </subtasks>
-          </RakeTaskImpl>
+          <RakeTaskImpl description="" fullCommand="create" id="create" />
+          <RakeTaskImpl description="" fullCommand="run" id="run" />
         </subtasks>
       </RakeTaskImpl>
     </option>

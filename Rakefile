@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "bundler/audit/task"
 require "fileutils"
 require "json"
 require "rspec/core/rake_task"
@@ -10,6 +11,7 @@ loader = Zeitwerk::Loader.new
 loader.push_dir "lib"
 loader.setup # ready!
 
+Bundler::Audit::Task.new
 RSpec::Core::RakeTask.new :spec
 RuboCop::RakeTask.new
 
