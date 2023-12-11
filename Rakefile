@@ -34,23 +34,27 @@ end
 
 desc "Create templates for a new solution"
 task :create, [:year, :day, :part] do |_, args|
+  year = format "%4d", args[:year]
+  day = format "%02d", args[:day]
+  part = format "%1d", args[:part]
+
   # Create a file for the data for the day
-  data_dir = "data/#{args[:year]}"
+  data_dir = "data/#{year}"
   FileUtils.mkdir_p data_dir
-  data_file = "#{data_dir}/#{args[:day]}.txt"
+  data_file = "#{data_dir}/#{day}.txt"
   FileUtils.touch data_file
 
   # Create a class for the part
-  class_dir = "lib/advent_of_code/year#{args[:year]}/day#{args[:day]}"
+  class_dir = "lib/advent_of_code/year#{year}/day#{day}"
   FileUtils.mkdir_p class_dir
-  class_file = "#{class_dir}/part#{args[:part]}.rb"
-  File.write class_file, format(CLASS_TEMPLATE, args)
+  class_file = "#{class_dir}/part#{part}.rb"
+  File.write class_file, format(CLASS_TEMPLATE, year:, day:, part:, url_day: args[:day])
 
   # Create a spec file for the part
-  spec_dir = "spec/advent_of_code/year#{args[:year]}/day#{args[:day]}"
+  spec_dir = "spec/advent_of_code/year#{year}/day#{day}"
   FileUtils.mkdir_p spec_dir
-  spec_file = "#{spec_dir}/part#{args[:part]}_spec.rb"
-  File.write spec_file, format(SPEC_TEMPLATE, args)
+  spec_file = "#{spec_dir}/part#{part}_spec.rb"
+  File.write spec_file, format(SPEC_TEMPLATE, year:, day:, part:)
 
   # Add the files to git
   `git add #{data_file} #{class_file} #{spec_file}`
@@ -62,7 +66,7 @@ CLASS_TEMPLATE = <<~CODE_TEMPLATE
   class AdventOfCode
     module Year%<year>s
       module Day%<day>s
-        # https://adventofcode.com/%<year>s/day/%<day>s
+        # https://adventofcode.com/%<year>s/day/%<url_day>s
         class Part%<part>s < AdventOfCode::Day
           def result
             # TODO: implement
