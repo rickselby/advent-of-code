@@ -17,7 +17,11 @@ RuboCop::RakeTask.new
 
 desc "Run some code"
 task :run, [:year, :day, :part] do |_, args|
-  input_file = Dir.glob "data/#{args[:year]}/#{args[:day]}.*"
+  year = format "%4d", args[:year]
+  day = format "%02d", args[:day]
+  part = format "%1d", args[:part]
+
+  input_file = Dir.glob "data/#{year}/#{day}.*"
   unless input_file.empty?
     input = File.read input_file.first
     input = case File.extname input_file.first
@@ -28,7 +32,7 @@ task :run, [:year, :day, :part] do |_, args|
             end
   end
 
-  day = AdventOfCode.get(args[:year], args[:day], args[:part]).new(input)
+  day = AdventOfCode.get(year, day, part).new(input)
   puts day.result
 end
 
