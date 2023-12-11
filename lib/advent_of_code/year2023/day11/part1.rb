@@ -5,40 +5,36 @@ class AdventOfCode
     module Day11
       # https://adventofcode.com/2023/day/11
       class Part1 < AdventOfCode::Day
+        def initialize(input, factor = 2)
+          super(input)
+          @factor = factor
+        end
+
         def result
-          add_rows.then { |rows| add_columns rows }
-                  .then { |rows| get_galaxies rows }
-                  .then { |galaxies| get_distances galaxies }
-                  .sum
+          @empty_rows = []
+          @empty_cols = []
+
+          rows = lines.map(&:strip)
+          get_empty_rows rows
+          get_empty_cols rows
+
+          get_galaxies(rows)
+            .then { |galaxies| get_distances galaxies }
+            .sum
         end
 
         private
 
-        def add_rows
-          map_lines = []
-          lines.map(&:strip).each do |line|
-            map_lines << line
-            map_lines << line if line.chars.all?(".")
+        def get_empty_rows(rows)
+          rows.each_with_index do |row, index|
+            @empty_rows << index if row.chars.all?(".")
           end
-          map_lines
         end
 
-        def add_columns(rows)
-          new_rows = {}
-          rows.size.times { |i| new_rows[i] = [] }
-          rows.first.size.times do |i|
-            all_empty = rows.map { |r| r[i] }.all?(".")
-            new_rows = add_cols rows, i, new_rows, all_empty
+        def get_empty_cols(rows)
+          rows.first.size.times do |col_index|
+            @empty_cols << col_index if rows.map { |r| r[col_index] }.all?(".")
           end
-          new_rows.values
-        end
-
-        def add_cols(rows, col, new_rows, all_empty)
-          rows.each_with_index do |row, row_index|
-            new_rows[row_index] << row[col]
-            new_rows[row_index] << row[col] if all_empty
-          end
-          new_rows
         end
 
         def get_galaxies(rows)
@@ -54,10 +50,22 @@ class AdventOfCode
           distances = []
           galaxies.each_with_index do |coords, index|
             galaxies[index + 1..].each do |next_coords|
-              distances << ((coords[0] - next_coords[0]).abs + (coords[1] - next_coords[1]).abs)
+              distances << distance(coords, next_coords)
             end
           end
           distances
+        end
+
+        def distance(coords1, coords2)
+          get_distance(coords1[0], coords2[0], @empty_rows) + get_distance(coords1[1], coords2[1], @empty_cols)
+        end
+
+        def get_distance(a, b, empties)
+          (b - a).abs + ((range_for(a, b).to_a & empties).size * (@factor - 1))
+        end
+
+        def range_for(a, b)
+          b > a ? a...b : b...a
         end
       end
     end
