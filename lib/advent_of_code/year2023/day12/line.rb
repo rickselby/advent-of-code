@@ -24,9 +24,6 @@ class AdventOfCode
           # Get cached result if possible
           return @state_cache[cache_key] if @state_cache.key? cache_key
 
-          # If the group index is too high, return
-          return 0.tap { |r| @state_cache[cache_key] = r } if g_idx > @groups.size
-
           # At the end of the line - Check if this iteration was a match
           return match? g_idx, g_len if s_idx == @springs.size
 
