@@ -61,7 +61,7 @@ task :create, [:year, :day, :part] do |_, args|
   File.write spec_file, format(SPEC_TEMPLATE, year:, day:, part:)
 
   # Add the files to git
-  `git add #{data_file} #{class_file} #{spec_file}`
+  `git add #{class_file} #{spec_file}`
 end
 
 CLASS_TEMPLATE = <<~CODE_TEMPLATE
