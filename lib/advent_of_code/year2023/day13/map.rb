@@ -58,12 +58,9 @@ class AdventOfCode
         end
 
         def transpose(map)
-          new_map = []
-          map.first.size.times do |i|
-            new_map[i] = ""
-            map.each { |line| new_map[i] += line[i] }
-          end
-          new_map
+          map.map(&:chars)
+             .then { |m| m[0].zip(*m[1..]) }
+             .map(&:join)
         end
 
         def smudges(map)
