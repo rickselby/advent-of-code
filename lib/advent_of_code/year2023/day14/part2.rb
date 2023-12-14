@@ -6,6 +6,7 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/14
       class Part2 < Part1
         LOOP_AMOUNT = 1_000_000_000
+
         def result
           @states = []
           @index = nil
