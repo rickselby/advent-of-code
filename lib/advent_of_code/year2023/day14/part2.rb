@@ -6,21 +6,26 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/14
       class Part2 < Part1
         def result
+          states = []
+          index = nil
           map = transpose(lines)
-          1_000_000_000.times do |loop_index|
-            last_state = map.dup
+          loop_amount = 1_000_000_000
+          loop_amount.times do |loop_index|
             4.times do
               map = map.map { |l| slide l }
               map = rotate map
             end
 
-            # TODO: we need to detect a loop, I think
-            if last_state == map
-              p loop_index
+            if states.include? map
+              previous_index = states.index map
+              index = previous_index + ((loop_amount - previous_index - 1) % (loop_index - previous_index))
               break
             end
+
+            states[loop_index] = map
           end
-          map.sum { |l| sum l }
+
+          states[index].sum { |l| sum l }
         end
 
         private
@@ -50,7 +55,7 @@ class AdventOfCode
 
         def sum(line)
           sum = 0
-          line.each_char.with_index do |c, i|
+          line.each_with_index do |c, i|
             sum += line.size - i if c == "O"
           end
           sum
