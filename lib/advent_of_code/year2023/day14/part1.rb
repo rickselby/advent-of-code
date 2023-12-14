@@ -6,7 +6,7 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/14
       class Part1 < AdventOfCode::Day
         def result
-          transpose(lines).then { |lines| lines.sum { |l| count_slides l } }
+          transpose(lines).then { |lines| lines.sum { |l| Line.new(l).count_slides } }
         end
 
         private
@@ -19,19 +19,38 @@ class AdventOfCode
           map[0].zip(*map[1..])
         end
 
-        def count_slides(line) # rubocop:disable Metrics/MethodLength
-          last_space = line.size
-          circular_rocks = []
-          line.each_with_index do |char, index|
-            case char
-            when "#"
-              last_space = line.size - index - 1
-            when "O"
-              circular_rocks << last_space
-              last_space -= 1
+        # Parse a single line
+        class Line
+          def initialize(line)
+            @line = line
+          end
+
+          def count_slides
+            @last_space = @line.size
+            @rocks = []
+            parse_line
+            @rocks.sum
+          end
+
+          private
+
+          def parse_line
+            @line.each_with_index do |char, index|
+              case char
+              when "#" then update_last_space index
+              when "O" then add_rock
+              end
             end
           end
-          circular_rocks.sum
+
+          def update_last_space(index)
+            @last_space = @line.size - index - 1
+          end
+
+          def add_rock
+            @rocks << @last_space
+            @last_space -= 1
+          end
         end
       end
     end
