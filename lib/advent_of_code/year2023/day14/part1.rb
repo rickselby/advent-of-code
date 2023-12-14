@@ -6,21 +6,23 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/14
       class Part1 < AdventOfCode::Day
         def result
-          transpose(lines).then { |lines| lines.sum { |l| slide_rocks l } }
+          transpose(lines).then { |lines| lines.sum { |l| count_slides l } }
         end
 
         private
 
-        def transpose(map)
-          map.map(&:chars)
-             .then { |m| m[0].zip(*m[1..]) }
-             .map(&:join)
+        def lines
+          @lines ||= super.map { |l| l.strip.chars }
         end
 
-        def slide_rocks(line)
+        def transpose(map)
+          map[0].zip(*map[1..])
+        end
+
+        def count_slides(line) # rubocop:disable Metrics/MethodLength
           last_space = line.size
           circular_rocks = []
-          line.chars.each_with_index do |char, index|
+          line.each_with_index do |char, index|
             case char
             when "#"
               last_space = line.size - index - 1
