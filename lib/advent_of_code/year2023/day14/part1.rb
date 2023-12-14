@@ -28,20 +28,16 @@ class AdventOfCode
           def count_slides
             @last_space = @line.size
             @rocks = []
-            parse_line
-            @rocks.sum
-          end
-
-          private
-
-          def parse_line
             @line.each_with_index do |char, index|
               case char
               when "#" then update_last_space index
               when "O" then add_rock
               end
             end
+            @rocks.sum
           end
+
+          private
 
           def update_last_space(index)
             @last_space = @line.size - index - 1
