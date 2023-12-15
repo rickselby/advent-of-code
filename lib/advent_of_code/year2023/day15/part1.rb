@@ -6,7 +6,7 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/15
       class Part1 < AdventOfCode::Day
         def result
-          @input.strip.split(",").sum { |s| hash s }
+          steps.sum { |s| hash s }
         end
 
         def hash(string)
@@ -14,6 +14,10 @@ class AdventOfCode
         end
 
         private
+
+        def steps
+          @input.strip.split(",")
+        end
 
         def value(character, sum)
           sum += character.ord
