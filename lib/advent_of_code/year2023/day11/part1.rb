@@ -38,22 +38,21 @@ class AdventOfCode
         end
 
         def get_galaxies(rows)
-          galaxies = []
-          rows.each_with_index do |row, row_index|
+          rows.each_with_index.inject([]) do |galaxies, (row, row_index)|
             (0...row.length).find_all { |i| row[i] == "#" }
                             .each { |col_index| galaxies << [row_index, col_index] }
+            galaxies
           end
-          galaxies
         end
 
         def get_distances(galaxies)
-          distances = []
-          galaxies.each_with_index do |coords, index|
+          galaxies.each_with_index.inject([]) do |distances, (coords, index)|
             galaxies[index + 1..].each do |next_coords|
               distances << distance(coords, next_coords)
             end
+
+            distances
           end
-          distances
         end
 
         def distance(coords1, coords2)

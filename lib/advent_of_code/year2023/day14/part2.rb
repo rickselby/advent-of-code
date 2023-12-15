@@ -21,11 +21,7 @@ class AdventOfCode
         end
 
         def sum(line)
-          sum = 0
-          line.each_with_index do |c, i|
-            sum += line.size - i if c == "O"
-          end
-          sum
+          line.each_with_index.select { |c, _| c == "O" }.sum { |_, i| line.size - i }
         end
 
         def find_index(map)

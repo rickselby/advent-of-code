@@ -12,11 +12,9 @@ class AdventOfCode
         private
 
         def numbers
-          numbers = []
-          lines.each_with_index do |line, row|
-            numbers += check_for_data line, row
+          lines.each_with_index.inject([]) do |numbers, (line, row)|
+            numbers + check_for_data(line, row)
           end
-          numbers
         end
 
         def check_for_data(line, row, index = -1, numbers = [])
@@ -38,8 +36,7 @@ class AdventOfCode
 
         # Build an array of coordinates of all symbols
         def load_symbols
-          symbols = []
-          lines.each_with_index do |line, row|
+          lines.each_with_index.inject([]) do |symbols, (line, row)|
             index = -1
             loop do
               index = line.index(/[^\d.\s]/, index + 1)
@@ -47,8 +44,9 @@ class AdventOfCode
 
               symbols << [row, index]
             end
+
+            symbols
           end
-          symbols
         end
 
         # Check there is a symbol in the coordinates around the number

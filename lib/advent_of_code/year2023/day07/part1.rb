@@ -17,10 +17,9 @@ class AdventOfCode
 
         def result
           parse_hands
-          total = 0
           @hands.sort { |a, b| sort_hands a[:hand], b[:hand] }
-                .each_with_index { |hand, rank| total += (rank + 1) * hand[:bid] }
-          total
+                .each_with_index
+                .sum { |hand, rank| (rank + 1) * hand[:bid] }
         end
 
         def hand_type(hand) # rubocop:disable Metrics/CyclomaticComplexity
