@@ -36,7 +36,7 @@ class AdventOfCode
 
         # Build an array of coordinates of all symbols
         def load_symbols
-          lines.each_with_index.inject([]) do |symbols, (line, row)|
+          lines.each_with_index.with_object([]) do |(line, row), symbols|
             index = -1
             loop do
               index = line.index(/[^\d.\s]/, index + 1)
@@ -44,8 +44,6 @@ class AdventOfCode
 
               symbols << [row, index]
             end
-
-            symbols
           end
         end
 

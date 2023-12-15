@@ -40,7 +40,7 @@ class AdventOfCode
 
         # Get a list of coordinates of all asterisks in the grid
         def load_possible_gears
-          lines.each_with_index.inject([]) do |symbols, (line, row)|
+          lines.each_with_index.with_object([]) do |(line, row), symbols|
             index = -1
             loop do
               index = line.index(/\*/, index + 1)
@@ -48,8 +48,6 @@ class AdventOfCode
 
               symbols << [row, index]
             end
-
-            symbols
           end
         end
 
