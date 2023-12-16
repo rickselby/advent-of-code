@@ -22,4 +22,9 @@ Runs the code against the input (`data/[year]/[day].txt`) and returns the result
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
-⭐
+⭐⭐
+
+
+## Improvements
+
+* 2023 Day 16 - part 1 takes 10 seconds - this should be faster!
