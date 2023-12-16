@@ -16,5 +16,9 @@ class AdventOfCode
     def lines
       @lines ||= @input.lines
     end
+
+    def input_array
+      @input_array ||= lines.map { |l| l.strip.chars }
+    end
   end
 end
