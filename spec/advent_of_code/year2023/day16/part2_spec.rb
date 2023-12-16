@@ -4,21 +4,34 @@ describe AdventOfCode::Year2023::Day16::Part2 do
   describe "result" do
     subject { described_class.new(data).result }
 
-    let(:data) do
-      <<~DATA
-        .|...\\....
-        |.-.\\.....
-        .....|-...
-        ........|.
-        ..........
-        .........\\
-        ..../.\\\\..
-        .-.-/..|..
-        .|....-|.\\
-        ..//.|....
-      DATA
+    context "with the given example" do
+      let(:data) do
+        <<~DATA
+          .|...\\....
+          |.-.\\.....
+          .....|-...
+          ........|.
+          ..........
+          .........\\
+          ..../.\\\\..
+          .-.-/..|..
+          .|....-|.\\
+          ..//.|....
+        DATA
+      end
+
+      it { is_expected.to eq 51 }
     end
 
-    it { is_expected.to eq 51 }
+    context "with my example" do
+      let(:data) do
+        <<~DATA
+          ./-\\.
+          .\\./.
+        DATA
+      end
+
+      it { is_expected.to eq 6 }
+    end
   end
 end
