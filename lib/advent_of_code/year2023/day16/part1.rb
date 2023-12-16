@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'benchmark'
+
 class AdventOfCode
   module Year2023
     module Day16
@@ -8,7 +10,10 @@ class AdventOfCode
         def result
           @energised = []
           @checked = []
-          energise 0, 0, :east
+          time = Benchmark.measure do
+            energise 0, 0, :east
+          end
+          puts "took #{time.real}"
           @energised.uniq.size
         end
 
