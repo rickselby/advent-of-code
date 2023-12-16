@@ -1,29 +1,26 @@
 # frozen_string_literal: true
 
-require 'benchmark'
-
 class AdventOfCode
   module Year2023
     module Day16
       # https://adventofcode.com/2023/day/16
       class Part1 < AdventOfCode::Day
         def result
-          @energised = []
-          @checked = []
-          time = Benchmark.measure do
-            energise 0, 0, :east
-          end
-          puts "took #{time.real}"
-          @energised.uniq.size
+          @checked = Set.new
+          energise 0, 0, :east
+          coords_only.size
         end
 
         private
+
+        def coords_only
+          @checked.map { |x, y, _| [x, y] }.uniq
+        end
 
         def energise(x, y, direction)
           return if @checked.include? [x, y, direction]
           return if invalid_coordinates? x, y
 
-          @energised << [x, y]
           @checked << [x, y, direction]
 
           move x, y, direction

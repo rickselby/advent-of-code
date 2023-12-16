@@ -1,43 +1,32 @@
 # frozen_string_literal: true
 
-require "benchmark"
-
 class AdventOfCode
   module Year2023
     module Day16
       # https://adventofcode.com/2023/day/16
       class Part2 < Part1
         def result
-          max = 0
-          all_starts.each do |x, y, direction|
-            @energised = []
-            @checked = []
+          all_starts.reduce(0) do |max, (x, y, direction)|
+            @checked = Set.new
             energise x, y, direction
-            max = [max, @energised.uniq.size].max
+            [max, coords_only.size].max
           end
-          max
         end
 
         private
 
         def all_starts
-          top_row + bottom_row + left_col + right_col
+          rows + cols
         end
 
-        def top_row
-          Array.new(input_array[0].size) { |x| [x, 0, :south] }
+        def rows
+          max_y = input_array.size - 1
+          Array.new(input_array[0].size) { |x| [[x, 0, :south], [x, max_y, :north]] }.flatten(1)
         end
 
-        def bottom_row
-          Array.new(input_array[0].size) { |x| [x, input_array.size - 1, :north] }
-        end
-
-        def left_col
-          Array.new(input_array.size) { |y| [0, y, :east] }
-        end
-
-        def right_col
-          Array.new(input_array.size) { |y| [input_array[0].size - 1, y, :west] }
+        def cols
+          max_x = input_array[0].size - 1
+          Array.new(input_array.size) { |y| [[0, y, :east], [max_x, y, :west]] }.flatten(1)
         end
       end
     end
