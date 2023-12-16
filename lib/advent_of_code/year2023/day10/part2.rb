@@ -18,7 +18,7 @@ class AdventOfCode
 
         # Get a list of coordinates that are part of the loop
         def loop_tiles
-          all_coords = []
+          all_coords = Set.new
           coords, direction = first_coords
           all_coords << coords
           loop do
