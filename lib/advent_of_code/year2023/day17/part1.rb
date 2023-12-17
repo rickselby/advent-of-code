@@ -8,7 +8,7 @@ class AdventOfCode
         def result
           @history = {}
           @minimums = {}
-          @previous_checks = Set.new
+          @possible_dupes = {}
           @checks = [
             { x: 0, y: 0, heat_loss: 0, direction_history: [], coord_history: Set.new }
           ]
@@ -22,7 +22,7 @@ class AdventOfCode
         DIRECTIONS = %i[north east south west].freeze
 
         def target_coords
-          @target_coords ||= [input_array.size - 1, input_array[0].size - 1]
+          @target_coords ||= [input_array[0].size - 1, input_array.size - 1]
         end
 
         def run_checks
@@ -52,16 +52,11 @@ class AdventOfCode
 
               return [new_check[:heat_loss], new_check[:direction_history]] if target_coords == [x, y]
 
-              add_check = true
-
               if been_this_way_before? new_check
-                matching_checks(new_check).each do |other_check|
-                  @checks.delete other_check if other_check[:heat_loss] > new_check[:heat_loss]
-                  add_check = false unless new_check[:heat_loss] < other_check[:heat_loss]
-                end
+                old_check = @possible_dupes[dupe_key(new_check)]
+                @checks.delete old_check if old_check[:heat_loss] > new_check[:heat_loss]
+                next unless new_check[:heat_loss] < old_check[:heat_loss]
               end
-
-              next unless add_check
 
               @checks << new_check
               store_minimum new_check
@@ -102,22 +97,13 @@ class AdventOfCode
         def been_this_way_before?(check)
           return false if check[:direction_history].last(2).uniq.size == 1
 
-          @previous_checks.include? dupe_key(check)
-        end
-
-        def matching_checks(check)
-          @checks.select do |c|
-            c[:x] == check[:x] &&
-              c[:y] == check[:y] &&
-              c[:direction_history].last(2).uniq.size != 1 &&
-              c[:direction_history].last == check[:direction_history].last
-          end
+          @possible_dupes.key? dupe_key(check)
         end
 
         def store_here(check)
           return if check[:direction_history].last(2).uniq.size == 1
 
-          @previous_checks.add dupe_key(check)
+          @possible_dupes[dupe_key(check)] = check
         end
 
         def dupe_key(check)
