@@ -10,11 +10,10 @@ class AdventOfCode
         DIRECTIONS = { "0" => "R", "1" => "D", "2" => "L", "3" => "U" }.freeze
 
         def parse_line(line)
-          bits = line.split
-          str = bits[2]
-          hex = str[2..6]
-          dir = str[7]
-          [DIRECTIONS[dir], hex.to_i(16)]
+          hex_string = line.split.last
+          hex_number = hex_string[2..6]
+          direction_code = hex_string[7]
+          [DIRECTIONS[direction_code], hex_number.to_i(16)]
         end
       end
     end
