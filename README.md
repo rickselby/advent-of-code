@@ -23,3 +23,10 @@ Runs the code against the input (`data/[year]/[day].txt`) and returns the result
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
 ⭐⭐⭐⭐⭐⭐
+
+
+## Things to investigate
+
+* 2023, Day 17: Dijkstra's algorithm / A* algorithms
+  * which I think I kind of implemented? but presumably suboptimally...
+* 2023, Day 18: [Shoelace algorithm](https://www.themathdoctors.org/polygon-coordinates-and-areas/)
