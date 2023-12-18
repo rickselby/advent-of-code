@@ -8,7 +8,6 @@ class AdventOfCode
         def result
           @map = { 0 => { 0 => "" } }
           parse_digs
-          print_map
           fill
         end
 
@@ -25,11 +24,16 @@ class AdventOfCode
         end
 
         def dig_and_update_map(x, y, line)
-          bits = line.split
+          bits = parse_line line
           @map[y][x] += bits[0]
           x, y = dig x, y, bits[0], bits[1].to_i
           @map[y][x] += OPPOSITE[bits[0]]
           [x, y]
+        end
+
+        def parse_line(line)
+          bits = line.split
+          [bits[0], bits[1]]
         end
 
         def dig(x, y, dir, length)
@@ -44,13 +48,11 @@ class AdventOfCode
         end
 
         def set_map_coord(x, y, at_end, dir)
-          @map[y][x] = if at_end
-                         ""
-                       elsif %w[U D].include? dir
-                         "|"
-                       else
-                         "-"
-                       end
+          if at_end
+            @map[y][x] = ""
+          elsif %w[U D].include? dir
+            @map[y][x] = "|"
+          end
         end
 
         def next_coords(x, y, dir)
@@ -63,36 +65,50 @@ class AdventOfCode
         end
 
         def fill
-          count = 0
-          row_range.each do |row|
-            inside = false
-            turn = nil
-            col_range.each do |col|
-              inside, turn, v = check row, col, inside, turn
-              count += v
-            end
+          previous_rows = {}
+          row_range.inject(0) do |count, row|
+            previous_row_key = @map[row].sort.join ":"
+            next count + previous_rows[previous_row_key] if previous_rows.key? previous_row_key
+
+            row_count = fill_row row
+            previous_rows[previous_row_key] = row_count
+            count + row_count
           end
-          count
         end
 
-        def check(row, col, inside, turn)
-          val = @map.dig(row, col)&.chars&.sort&.join
-          return [inside, turn, 0] if val.nil? && !inside
-
-          inside, turn = check_again val, inside, turn
-
-          [inside, turn, 1]
+        def fill_row(row)
+          turn = nil
+          pre_turn = nil
+          last_state = { col: 0, inside: false }
+          @map[row].sort.to_h.keys.inject(0) do |count, col|
+            count += (col - last_state[:col]) if last_state[:inside]
+            inside, turn, pre_turn = check row, col, last_state[:inside], turn, pre_turn
+            count += 1 if !last_state[:inside] && inside
+            last_state = { col:, inside: }
+            count
+          end
         end
 
-        def check_again(val, inside, turn)
+        def check(row, col, inside, turn, pre_turn)
+          val = @map.dig(row, col).chars.sort.join
+
+          inside, turn, pre_turn = check_again val, inside, turn, pre_turn
+
+          [inside, turn, pre_turn]
+        end
+
+        def check_again(val, inside, turn, pre_turn)
           case val
           when "|" then inside = !inside
-          when "DR", "RU" then turn = val
-          when "LU" then inside = !inside if turn == "DR"
-          when "DL" then inside = !inside if turn == "RU"
+          when "DR", "RU"
+            turn = val
+            pre_turn = inside
+            inside = true
+          when "LU" then inside = turn == "DR" ? !pre_turn : pre_turn
+          when "DL" then inside = turn == "RU" ? !pre_turn : pre_turn
           end
 
-          [inside, turn]
+          [inside, turn, pre_turn]
         end
 
         def row_range
@@ -106,17 +122,17 @@ class AdventOfCode
           min..max
         end
 
-        def print_map
-          width = col_range.size
-          offset = -col_range.min
-          row_range.each do |row|
-            str = " " * width
-            @map[row].each do |k, v|
-              str[k + offset] = v.size > 1 ? "T" : v
-            end
-            puts str
-          end
-        end
+        # def print_map
+        #   width = col_range.size
+        #   offset = -col_range.min
+        #   row_range.each do |row|
+        #     str = " " * width
+        #     @map[row].each do |k, v|
+        #       str[k + offset] = v.size > 1 ? "T" : v
+        #     end
+        #     puts str
+        #   end
+        # end
       end
     end
   end

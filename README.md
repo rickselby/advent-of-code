@@ -22,4 +22,4 @@ Runs the code against the input (`data/[year]/[day].txt`) and returns the result
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
-⭐⭐⭐⭐⭐
+⭐⭐⭐⭐⭐⭐
