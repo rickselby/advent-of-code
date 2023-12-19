@@ -4,6 +4,21 @@ describe AdventOfCode::Year2023::Day10::Part2 do
   describe "result" do
     subject { described_class.new(data).result }
 
+    context "with a really simple example" do
+      let(:data) do
+        <<~DATA
+          ......
+          .S--7.
+          .|..|.
+          .|..|.
+          .L--J.
+          ......
+        DATA
+      end
+
+      it { is_expected.to eq 4 }
+    end
+
     context "with one given example" do
       let(:data) do
         <<~DATA

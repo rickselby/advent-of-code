@@ -6,8 +6,6 @@ class AdventOfCode
       # https://adventofcode.com/2023/day/10
       class Part1 < AdventOfCode::Day
         def result
-          @map = {}
-          @start = []
           parse_map
           path_length / 2
         end
@@ -15,6 +13,7 @@ class AdventOfCode
         private
 
         def parse_map
+          @map = {}
           lines.each_with_index do |line, row|
             line.chars.each_with_index do |char, col|
               @map[row] ||= {}

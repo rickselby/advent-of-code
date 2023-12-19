@@ -29,6 +29,10 @@ class AdventOfCode
         shoelace + (perimeter / 2) + 1
       end
 
+      def without_border
+        shoelace - (perimeter / 2) + 1
+      end
+
       private
 
       def vectors
