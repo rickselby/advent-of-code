@@ -5,16 +5,12 @@ class AdventOfCode
     module Day20
       # A collection of modules, and a way of counting pulses between them
       class Modules
-        attr_reader :button_presses
+        attr_reader :button_presses, :modules
 
         def initialize(lines)
           @modules = {}
           create_modules lines
           reset
-        end
-
-        def get(key)
-          @modules[key]
         end
 
         def press_button
