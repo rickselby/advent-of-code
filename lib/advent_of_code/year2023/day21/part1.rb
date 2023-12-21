@@ -34,10 +34,14 @@ class AdventOfCode
             possible_coords(coords).each do |poss|
               next if invalid_coords poss
 
-              new_list << poss unless @map[poss[1]][poss[0]] == "#"
+              new_list << poss unless rock? poss
             end
           end
           new_list
+        end
+
+        def rock?(coords)
+          @map[coords[1]][coords[0]] == "#"
         end
 
         def possible_coords(coords)
@@ -50,7 +54,15 @@ class AdventOfCode
         end
 
         def invalid_coords(coords)
-          coords[0].negative? || coords[1].negative? || coords[0] >= @map[0].size || coords[1] >= @map.size
+          coords[0].negative? || coords[1].negative? || coords[0] >= max_x || coords[1] >= max_y
+        end
+
+        def max_x
+          @max_x ||= @map[0].size
+        end
+
+        def max_y
+          @max_y ||= @map.size
         end
       end
     end
