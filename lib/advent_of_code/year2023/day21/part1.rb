@@ -18,8 +18,7 @@ class AdventOfCode
         end
 
         def steps(steps)
-          coords_list = Set.new
-          coords_list << @start
+          coords_list = Set.new [@start]
           steps.times do
             coords_list = find_moves coords_list
           end
