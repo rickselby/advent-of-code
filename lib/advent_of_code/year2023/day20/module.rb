@@ -5,13 +5,14 @@ class AdventOfCode
     module Day20
       # Abstract class for a single module
       class Module
-        attr_reader :name, :targets
+        attr_reader :inputs, :name, :targets
 
         def initialize(name, targets, modules)
           @name = name
           @targets = targets
           @modules = modules
           @inputs = []
+          reset
         end
 
         def add_input(name)
@@ -21,6 +22,10 @@ class AdventOfCode
         # Default function is to pass the pulse through
         def receive(pulse, _name)
           send_pulse pulse
+        end
+
+        def reset
+          # To implement
         end
 
         protected

@@ -86,4 +86,47 @@
       </RakeTaskImpl>
     </option>
   </component>
+  <component name="RakeTasksCache-v2">
+    <option name="myRootTask">
+      <RakeTaskImpl id="rake">
+        <subtasks>
+          <RakeTaskImpl id="bundle">
+            <subtasks>
+              <RakeTaskImpl id="audit">
+                <subtasks>
+                  <RakeTaskImpl description="Checks the Gemfile.lock for insecure dependencies" fullCommand="bundle:audit:check" id="check" />
+                  <RakeTaskImpl description="Updates the bundler-audit vulnerability database" fullCommand="bundle:audit:update" id="update" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="" fullCommand="bundle:audit" id="audit" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Create templates for a new solution" fullCommand="create[year,day,part]" id="create[year,day,part]" />
+          <RakeTaskImpl description="Run RuboCop" fullCommand="rubocop" id="rubocop" />
+          <RakeTaskImpl id="rubocop">
+            <subtasks>
+              <RakeTaskImpl description="Autocorrect RuboCop offenses (only when it's safe)" fullCommand="rubocop:autocorrect" id="autocorrect" />
+              <RakeTaskImpl description="Autocorrect RuboCop offenses (safe and unsafe)" fullCommand="rubocop:autocorrect_all" id="autocorrect_all" />
+              <RakeTaskImpl description="" fullCommand="rubocop:auto_correct" id="auto_correct" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Run some code" fullCommand="run[year,day,part]" id="run[year,day,part]" />
+          <RakeTaskImpl description="Run RSpec code examples" fullCommand="spec" id="spec" />
+          <RakeTaskImpl id="bundler">
+            <subtasks>
+              <RakeTaskImpl description="" fullCommand="bundler:audit" id="audit" />
+              <RakeTaskImpl id="audit">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="bundler:audit:check" id="check" />
+                  <RakeTaskImpl description="" fullCommand="bundler:audit:update" id="update" />
+                </subtasks>
+              </RakeTaskImpl>
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="" fullCommand="create" id="create" />
+          <RakeTaskImpl description="" fullCommand="run" id="run" />
+        </subtasks>
+      </RakeTaskImpl>
+    </option>
+  </component>
 </module>

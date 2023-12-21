@@ -5,17 +5,35 @@ class AdventOfCode
     module Day20
       # A collection of modules, and a way of counting pulses between them
       class Modules
+        attr_reader :button_presses
+
         def initialize(lines)
           @modules = {}
-          @broadcast = []
           create_modules lines
-          @pulse_count = { high: 0, low: 0 }
-          @pulses = []
+          reset
+        end
+
+        def get(key)
+          @modules[key]
         end
 
         def press_button
           pulse :button, :broadcaster, :low
           parse_pulses
+        end
+
+        def press_button_until_target_outputs_high(target)
+          reset
+          @halt_on = target
+          @halted = false
+          @button_presses = 0
+          loop do
+            break if @halted
+
+            press_button
+            @button_presses += 1
+          end
+          @button_presses
         end
 
         def pulse(sender, target, pulse)
@@ -24,7 +42,6 @@ class AdventOfCode
         end
 
         def result
-          p @pulse_count
           @pulse_count.values.reduce :*
         end
 
@@ -67,8 +84,20 @@ class AdventOfCode
             sender, target, pulse = @pulses.shift
             next unless @modules.key? target
 
+            if sender == @halt_on && pulse == :high
+              @halted = true
+              return
+            end
+
             @modules[target].receive pulse, sender
           end
+        end
+
+        def reset
+          @modules.each_value(&:reset)
+          @pulse_count = { high: 0, low: 0 }
+          @pulses = []
+          @halt_on = nil
         end
       end
     end

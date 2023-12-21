@@ -5,11 +5,6 @@ class AdventOfCode
     module Day20
       # A conjunction module
       class Conjunction < Module
-        def initialize(name, targets, modules)
-          super
-          @status = {}
-        end
-
         def add_input(name)
           super
           @status[name] = :low
@@ -19,6 +14,11 @@ class AdventOfCode
           @status[name] = pulse
 
           send_pulse @status.values.all?(:high) ? :low : :high
+        end
+
+        def reset
+          @status ||= {}
+          @status.each_key { |k| @status[k] = :low }
         end
       end
     end
