@@ -7,6 +7,7 @@ class AdventOfCode
       class Part1 < AdventOfCode::Day
         def result
           @blocks = []
+          @cubes = Set.new
           parse_input
           p "settling... #{Time.now}"
           settle_all
@@ -25,6 +26,8 @@ class AdventOfCode
 
         def fill_in_blocks(blocks)
           from, to = blocks.map(&:dup)
+          @cubes << from.dup
+          @cubes << to.dup
           return blocks if from == to
 
           diff = from.zip(to).map { |f, t| t - f }
@@ -39,37 +42,48 @@ class AdventOfCode
             from[axis] += change
             break if from == to
 
+            @cubes << from.dup
             blocks << from.dup
           end
           blocks
         end
 
         def settle_all
+          @blocks = @blocks.sort_by { |block| block.map { |c| c[2] }.min }
           loop do
-            changes = @blocks.each_with_index.any? { |b, i| settle b, i }
+            puts "====="
+            changes = false
+            @blocks.each_with_index do |b, i|
+              changed = settle b, i
+              changes ||= changed
+            end
             break unless changes
           end
         end
 
         def settle(block, index)
+          block.each { |coords| @cubes.delete coords }
+
           loop do
             break if block.any? { |c| c[2] == 1 }
 
             new_block = block.dup.map { |coords| [coords[0], coords[1], coords[2] - 1] }
-            break if clash? new_block, index
+            break if clash? new_block
 
             block = new_block
           end
 
+          block.each { |coords| @cubes << coords }
+
           return false if @blocks[index] == block
 
+          puts "moved #{index}: #{block}"
           @blocks[index] = block
           true
         end
 
-        def clash?(block, index)
-          @blocks.reject.with_index { |_, i| i == index }
-                 .any? { |b| b.intersect? block }
+        def clash?(block)
+          block.any? { |c| @cubes.include? c }
         end
 
         def try_disintegrate
@@ -81,6 +95,7 @@ class AdventOfCode
         end
 
         def settle2(blocks, block, index)
+
           loop do
             break if block.any? { |c| c[2] == 1 }
 
