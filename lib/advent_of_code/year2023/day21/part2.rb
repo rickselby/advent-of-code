@@ -35,6 +35,10 @@ class AdventOfCode
           # work out how many maps are complete.
           # take the number of steps taken from entering the first map on the left
           #   and divide by the number of steps it takes to get to equilibrium
+          # TODO: this is wrong!
+          # total maps is based around map size; it takes that long to start a map,
+          # and then the number of steps to complete it.
+          # so it's probably steps - (steps to complete) % map size
           maps, remainder = (STEPS - axes_start_at).divmod left[:steps]
 
           # Get the width of the map
@@ -83,6 +87,7 @@ class AdventOfCode
           completed_in_diagonal = (maps - 1).then { |x| (x.pow(2) + x) / 2 }
 
           # we always hit a diagonal map on an odd
+          # TODO: no we don't! it's always even, so they change. urgh.
           # find the correct equilibrium value
           key = diagonal[:each_step].keys.reverse.find(&(STEPS.even? ? :even? : :odd?))
           diagonal_completed_total = diagonal[:each_step][key] * completed_in_diagonal
