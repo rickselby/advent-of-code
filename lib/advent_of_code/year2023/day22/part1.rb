@@ -9,9 +9,7 @@ class AdventOfCode
           @blocks = []
           @cubes = Set.new
           parse_input
-          p "settling... #{Time.now}"
           settle_all
-          p "counting... #{Time.now}"
           try_disintegrate
         end
 
@@ -51,7 +49,6 @@ class AdventOfCode
         def settle_all
           @blocks = @blocks.sort_by { |block| block.map { |c| c[2] }.min }
           loop do
-            puts "====="
             changes = false
             @blocks.each_with_index do |b, i|
               changed = settle b, i
@@ -63,23 +60,26 @@ class AdventOfCode
 
         def settle(block, index)
           block.each { |coords| @cubes.delete coords }
+          block = drop_block block
+          block.each { |coords| @cubes << coords }
 
+          return false if @blocks[index] == block
+
+          @blocks[index] = block
+          true
+        end
+
+        def drop_block(block)
           loop do
             break if block.any? { |c| c[2] == 1 }
 
-            new_block = block.dup.map { |coords| [coords[0], coords[1], coords[2] - 1] }
+            new_block = shift_block_down block
             break if clash? new_block
 
             block = new_block
           end
 
-          block.each { |coords| @cubes << coords }
-
-          return false if @blocks[index] == block
-
-          puts "moved #{index}: #{block}"
-          @blocks[index] = block
-          true
+          block
         end
 
         def clash?(block)
@@ -87,31 +87,32 @@ class AdventOfCode
         end
 
         def try_disintegrate
-          @blocks.count { |b| no_movement?(@blocks.reject { |ib| ib == b }) }
+          @blocks.count do |block|
+            without_coords(block) { no_movement?(@blocks.reject { |b| b == block }) }
+          end
         end
 
         def no_movement?(blocks)
-          blocks.each_with_index.none? { |b, i| settle2 blocks, b, i }
-        end
-
-        def settle2(blocks, block, index)
-
-          loop do
-            break if block.any? { |c| c[2] == 1 }
-
-            new_block = block.dup.map { |coords| [coords[0], coords[1], coords[2] - 1] }
-            break if clash2? blocks, new_block, index
-
-            block = new_block
+          blocks.each.none? do |block|
+            without_coords(block) { can_block_move? block }
           end
-
-          return false if blocks[index] == block
-
-          true
         end
 
-        def clash2?(blocks, block, index)
-          blocks.reject.with_index { |_, i| i == index }.any? { |b| b.intersect? block }
+        def can_block_move?(block)
+          return false if block.any? { |c| c[2] == 1 }
+
+          !clash?(shift_block_down(block))
+        end
+
+        def shift_block_down(block)
+          block.dup.map { |coords| [coords[0], coords[1], coords[2] - 1] }
+        end
+
+        def without_coords(block)
+          block.each { |coords| @cubes.delete coords }
+          result = yield
+          block.each { |coords| @cubes << coords }
+          result
         end
       end
     end
