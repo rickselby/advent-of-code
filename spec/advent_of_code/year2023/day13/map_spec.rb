@@ -55,7 +55,7 @@ describe AdventOfCode::Year2023::Day13::Map do
       [maps[0], 5],
       [maps[1], 400],
       [maps[2], 3],
-      [maps[3], 16]
+      [maps[3], 16],
     ]
 
     data.each do |map, result|
@@ -135,7 +135,7 @@ describe AdventOfCode::Year2023::Day13::Map do
       [maps[0], 300],
       [maps[1], 100],
       [maps[2], 5],
-      [maps[3], 16]
+      [maps[3], 16],
     ]
 
     data.each do |map, result|

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day06
       # https://adventofcode.com/2023/day/6
@@ -11,7 +11,7 @@ class AdventOfCode
         end
 
         def result
-          @input.map { |r| ways_to_beat r }.inject(:*)
+          @input.map { |r| ways_to_beat r }.reduce(:*)
         end
 
         private

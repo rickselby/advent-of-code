@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day02
       # A single line of the input, broken down
       class Line
         MAX = {
-          red: 12,
+          red:   12,
           green: 13,
-          blue: 14
+          blue:  14,
         }.freeze
 
         attr_reader :game_id
@@ -25,7 +25,7 @@ class AdventOfCode
         end
 
         def power
-          @colours.values.inject :*
+          @colours.values.reduce :*
         end
 
         private

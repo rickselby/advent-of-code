@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day19
       # https://adventofcode.com/2023/day/19
@@ -15,7 +15,7 @@ class AdventOfCode
         private
 
         def get_valid_ranges(part, ruleset = :in) # rubocop:disable Metrics/AbcSize
-          @ruleset[ruleset].filter_map do |rule|
+          ranges = @ruleset[ruleset].filter_map do |rule|
             next handle_continue part, rule[:continue] if rule[:type] == :continue
             next unless part[rule[:key]].include? rule[:value]
 
@@ -23,12 +23,14 @@ class AdventOfCode
 
             part[rule[:key]] = continue_range
             handle_continue new_part(part, rule[:key], branch_range), rule[:continue]
-          end.flatten
+          end
+
+          ranges.flatten
         end
 
         def handle_continue(part, continue)
           if %i[A R].include? continue
-            continue == :A ? part : nil
+            (continue == :A) ? part : nil
           else
             get_valid_ranges part, continue
           end

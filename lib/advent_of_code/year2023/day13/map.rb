@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day13
       # Checks for each map
@@ -34,7 +34,7 @@ class AdventOfCode
         end
 
         def mirror_line_value(line)
-          line[0] == :row ? line[1] * 100 : line[1]
+          (line[0] == :row) ? line[1] * 100 : line[1]
         end
 
         def check_map(map, type)
@@ -54,7 +54,7 @@ class AdventOfCode
         def check_mirror(map, left, right = left + 1, first: true)
           return !first if left.negative? || right >= map.size
 
-          map[left] == map[right] ? check_mirror(map, left - 1, right + 1, first: false) : false
+          (map[left] == map[right]) ? check_mirror(map, left - 1, right + 1, first: false) : false
         end
 
         def transpose(map)
@@ -67,7 +67,7 @@ class AdventOfCode
           map.each_with_index do |row, r_idx|
             row.size.times do |c_idx|
               original_value = row[c_idx]
-              map[r_idx][c_idx] = (original_value == "#" ? "." : "#")
+              map[r_idx][c_idx] = ((original_value == "#") ? "." : "#")
 
               yield map
               map[r_idx][c_idx] = original_value

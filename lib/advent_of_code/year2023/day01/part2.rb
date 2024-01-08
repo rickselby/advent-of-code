@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day01
       # https://adventofcode.com/2023/day/1
       class Part2 < Part1
         NUMBERS = {
-          "one" => 1,
-          "two" => 2,
+          "one"   => 1,
+          "two"   => 2,
           "three" => 3,
-          "four" => 4,
-          "five" => 5,
-          "six" => 6,
+          "four"  => 4,
+          "five"  => 5,
+          "six"   => 6,
           "seven" => 7,
           "eight" => 8,
-          "nine" => 9
+          "nine"  => 9,
         }.freeze
 
         def value_for_line(line)

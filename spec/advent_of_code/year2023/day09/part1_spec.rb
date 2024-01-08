@@ -21,7 +21,7 @@ describe AdventOfCode::Year2023::Day09::Part1 do
     data = [
       [[0, 3, 6, 9, 12, 15], 18],
       [[1, 3, 6, 10, 15, 21], 28],
-      [[10, 13, 16, 21, 30, 45], 68]
+      [[10, 13, 16, 21, 30, 45], 68],
     ]
 
     data.each do |sequence, result|

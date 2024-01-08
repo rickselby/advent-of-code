@@ -40,7 +40,7 @@ describe AdventOfCode::Year2023::Day07::Part1 do
       "11123" => AdventOfCode::Year2023::Day07::Part1::HANDS[:three_of_a_kind],
       "11223" => AdventOfCode::Year2023::Day07::Part1::HANDS[:two_pair],
       "11234" => AdventOfCode::Year2023::Day07::Part1::HANDS[:one_pair],
-      "12345" => AdventOfCode::Year2023::Day07::Part1::HANDS[:high_card]
+      "12345" => AdventOfCode::Year2023::Day07::Part1::HANDS[:high_card],
     }
 
     data.each do |hand, type|
