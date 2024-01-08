@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day16
       # https://adventofcode.com/2023/day/16
@@ -53,9 +53,9 @@ class AdventOfCode
 
         TURNS = {
           north: { left: :west, right: :east },
-          east: { left: :north, right: :south },
+          east:  { left: :north, right: :south },
           south: { left: :east, right: :west },
-          west: { left: :south, right: :north }
+          west:  { left: :south, right: :north },
         }.freeze
 
         def mirror(x, y, direction, mirror)
@@ -63,18 +63,18 @@ class AdventOfCode
         end
 
         MIRRORS = {
-          "/" => {
+          "/"  => {
             north: :east,
-            east: :north,
+            east:  :north,
             south: :west,
-            west: :south
+            west:  :south,
           },
           "\\" => {
             north: :west,
-            east: :south,
+            east:  :south,
             south: :east,
-            west: :north
-          }
+            west:  :north,
+          },
         }.freeze
 
         def invalid_coordinates?(x, y)

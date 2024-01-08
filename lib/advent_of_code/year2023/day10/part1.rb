@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day10
       # https://adventofcode.com/2023/day/10
@@ -63,10 +63,10 @@ class AdventOfCode
         def next_direction(coords, direction) # rubocop:disable Metrics/CyclomaticComplexity
           case @map.dig(*coords)
           when "|", "-" then direction
-          when "L" then direction == :south ? :east : :north
-          when "J" then direction == :south ? :west : :north
-          when "7" then direction == :north ? :west : :south
-          when "F" then direction == :north ? :east : :south
+          when "L" then (direction == :south) ? :east : :north
+          when "J" then (direction == :south) ? :west : :north
+          when "7" then (direction == :north) ? :west : :south
+          when "F" then (direction == :north) ? :east : :south
           end
         end
 

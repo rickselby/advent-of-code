@@ -1,12 +1,19 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day05
       # https://adventofcode.com/2023/day/5
       class Part1 < AdventOfCode::Day
-        MAPS = %i[seed-to-soil soil-to-fertilizer fertilizer-to-water water-to-light light-to-temperature
-                  temperature-to-humidity humidity-to-location].freeze
+        MAPS = %i[
+          seed-to-soil
+          soil-to-fertilizer
+          fertilizer-to-water
+          water-to-light
+          light-to-temperature
+          temperature-to-humidity
+          humidity-to-location
+        ].freeze
 
         def initialize(input)
           super(input)
@@ -64,8 +71,8 @@ class AdventOfCode
           @maps[map].append(
             {
               range: values[1]...(values[1] + values[2]),
-              diff: values[0] - values[1]
-            }
+              diff:  values[0] - values[1],
+            },
           )
         end
 

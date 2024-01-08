@@ -2,7 +2,7 @@
 
 require "matrix"
 
-class AdventOfCode
+module AdventOfCode
   module Algorithms
     # Implementation of the shoelace algorithm for calculating areas of polygons from their
     # https://www.themathdoctors.org/polygon-coordinates-and-areas/

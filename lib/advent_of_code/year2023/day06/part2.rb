@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day06
       # https://adventofcode.com/2023/day/6
@@ -10,9 +10,9 @@ class AdventOfCode
         def parse_input(input)
           @input = [
             {
-              time: get_value(input.lines[0]),
-              distance: get_value(input.lines[1])
-            }
+              time:     get_value(input.lines[0]),
+              distance: get_value(input.lines[1]),
+            },
           ]
         end
 

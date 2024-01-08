@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day16
       # https://adventofcode.com/2023/day/16
