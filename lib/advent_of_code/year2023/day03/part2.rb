@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day03
       # https://adventofcode.com/2023/day/3
@@ -9,7 +9,7 @@ class AdventOfCode
           # A list of asterisk coordinates and any numbers that are adjacent
           @possible_gear_counts = {}
           look_for_gears
-          actual_gears.values.sum { |numbers| numbers.inject(:*) }
+          actual_gears.values.sum { |numbers| numbers.reduce(:*) }
         end
 
         private

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   # Shared day functionality
   class Day
     def initialize(input)

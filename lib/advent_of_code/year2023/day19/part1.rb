@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day19
       # https://adventofcode.com/2023/day/19
@@ -51,12 +51,21 @@ class AdventOfCode
 
         def parse_rule(rule)
           if rule.count("<>").positive?
-            matches = rule.match(/(.)(.)(\d+):(.*)/)
-            { type: :comparison, key: matches[1].to_sym, comparison: matches[2].to_sym, value: matches[3].to_i,
-              continue: matches[4].to_sym }
+            comparision_rule rule
           else
             { type: :continue, continue: rule.to_sym }
           end
+        end
+
+        def comparision_rule(rule)
+          matches = rule.match(/(.)(.)(\d+):(.*)/)
+          {
+            type:       :comparison,
+            key:        matches[1].to_sym,
+            comparison: matches[2].to_sym,
+            value:      matches[3].to_i,
+            continue:   matches[4].to_sym,
+          }
         end
 
         def handle_continue(part, continue)
@@ -70,7 +79,7 @@ class AdventOfCode
         def rule_matches?(rule, part)
           return true if rule[:type] == :continue
 
-          part[rule[:key]].send(rule[:comparison], rule[:value])
+          part[rule[:key]].public_send(rule[:comparison], rule[:value])
         end
 
         def sum_accepted_parts(parts)

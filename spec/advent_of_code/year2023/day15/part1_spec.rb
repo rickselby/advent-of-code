@@ -27,7 +27,7 @@ describe AdventOfCode::Year2023::Day15::Part1 do
       ["ab=5", 197],
       ["pc-", 48],
       ["pc=6", 214],
-      ["ot=7", 231]
+      ["ot=7", 231],
     ]
 
     data.each do |string, result|

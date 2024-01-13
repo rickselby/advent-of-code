@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day11
       # https://adventofcode.com/2023/day/11
@@ -39,7 +39,7 @@ class AdventOfCode
 
         def get_galaxies(rows)
           rows.each_with_index.with_object([]) do |(row, row_index), galaxies|
-            (0...row.length).find_all { |i| row[i] == "#" }
+            (0...row.length).select { |i| row[i] == "#" }
                             .each { |col_index| galaxies << [row_index, col_index] }
           end
         end
@@ -56,12 +56,12 @@ class AdventOfCode
           get_distance(coords1[0], coords2[0], @empty_rows) + get_distance(coords1[1], coords2[1], @empty_cols)
         end
 
-        def get_distance(a, b, empties)
-          (b - a).abs + ((range_for(a, b).to_a & empties).size * (@factor - 1))
+        def get_distance(coord1, coord2, empties)
+          (coord2 - coord1).abs + ((range_for(coord1, coord2).to_a & empties).size * (@factor - 1))
         end
 
-        def range_for(a, b)
-          b > a ? a...b : b...a
+        def range_for(val1, val2)
+          (val2 > val1) ? val1...val2 : val2...val1
         end
       end
     end

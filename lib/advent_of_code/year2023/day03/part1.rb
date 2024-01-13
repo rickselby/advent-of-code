@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day03
       # https://adventofcode.com/2023/day/3
@@ -12,7 +12,7 @@ class AdventOfCode
         private
 
         def numbers
-          lines.each_with_index.inject([]) do |numbers, (line, row)|
+          lines.each_with_index.reduce([]) do |numbers, (line, row)|
             numbers + check_for_data(line, row)
           end
         end

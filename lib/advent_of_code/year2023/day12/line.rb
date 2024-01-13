@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day12
       # Each line in the puzzle can be handled separately
@@ -37,7 +37,7 @@ class AdventOfCode
             g_len = 0
           end
 
-          g_idx == @groups.size && g_len.zero? ? 1 : 0
+          (g_idx == @groups.size && g_len.zero?) ? 1 : 0
         end
 
         def result(s_idx, g_idx, g_len)

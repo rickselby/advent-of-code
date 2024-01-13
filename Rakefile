@@ -67,7 +67,7 @@ end
 CLASS_TEMPLATE = <<~CODE_TEMPLATE
   # frozen_string_literal: true
 
-  class AdventOfCode
+  module AdventOfCode
     module Year%<year>s
       module Day%<day>s
         # https://adventofcode.com/%<year>s/day/%<url_day>s

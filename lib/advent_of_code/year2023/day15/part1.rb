@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day15
       # https://adventofcode.com/2023/day/15
@@ -10,7 +10,7 @@ class AdventOfCode
         end
 
         def hash(string)
-          string.chars.inject(0) { |sum, c| value c, sum }
+          string.chars.reduce(0) { |sum, c| value c, sum }
         end
 
         private

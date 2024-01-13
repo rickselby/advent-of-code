@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day21
       # https://adventofcode.com/2023/day/21
@@ -45,7 +45,7 @@ class AdventOfCode
             [coords[0], coords[1] + 1],
             [coords[0], coords[1] - 1],
             [coords[0] + 1, coords[1]],
-            [coords[0] - 1, coords[1]]
+            [coords[0] - 1, coords[1]],
           ]
         end
 

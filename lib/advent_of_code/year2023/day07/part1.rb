@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-class AdventOfCode
+module AdventOfCode
   module Year2023
     module Day07
       # https://adventofcode.com/2023/day/7
       class Part1 < AdventOfCode::Day
         HANDS = {
-          five_of_a_kind: 7,
-          four_of_a_kind: 6,
-          full_house: 5,
+          five_of_a_kind:  7,
+          four_of_a_kind:  6,
+          full_house:      5,
           three_of_a_kind: 4,
-          two_pair: 3,
-          one_pair: 2,
-          high_card: 1
+          two_pair:        3,
+          one_pair:        2,
+          high_card:       1,
         }.freeze
 
         def result
@@ -28,9 +28,9 @@ class AdventOfCode
           case cards.count
           when 1 then HANDS[:five_of_a_kind]
           # could be 4 of a kind, or full house
-          when 2 then cards.values.max == 4 ? HANDS[:four_of_a_kind] : HANDS[:full_house]
+          when 2 then (cards.values.max == 4) ? HANDS[:four_of_a_kind] : HANDS[:full_house]
           # could be 3 of a kind or two pair
-          when 3 then cards.values.max == 3 ? HANDS[:three_of_a_kind] : HANDS[:two_pair]
+          when 3 then (cards.values.max == 3) ? HANDS[:three_of_a_kind] : HANDS[:two_pair]
           when 4 then HANDS[:one_pair]
           when 5 then HANDS[:high_card]
           end

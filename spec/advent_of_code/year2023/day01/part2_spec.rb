@@ -30,7 +30,7 @@ describe AdventOfCode::Year2023::Day01::Part2 do
       ["4nineeightseven2", 42],
       ["zoneight234", 14],
       ["7pqrstsixteen", 76],
-      ["six7pqrstsixteen", 66]
+      ["six7pqrstsixteen", 66],
     ]
 
     data.each do |string, result|
