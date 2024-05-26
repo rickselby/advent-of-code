@@ -16,7 +16,7 @@ module AdventOfCode
         ].freeze
 
         def initialize(input)
-          super(input)
+          super
           @seeds = []
           @maps = {}
           read_file

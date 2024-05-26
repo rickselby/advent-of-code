@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/8
       class Part1 < AdventOfCode::Day
         def initialize(input)
-          super(input)
+          super
           @nodes = {}
           parse_input
         end
