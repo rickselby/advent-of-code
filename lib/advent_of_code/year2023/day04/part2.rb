@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/4
       class Part2 < Part1
         def initialize(lines)
-          super(lines)
+          super
           # Keys are card numbers, values are the amount of that card
           @cards = {}
         end
