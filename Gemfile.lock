@@ -142,7 +142,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.0)
 
 PLATFORMS
   x86_64-linux
@@ -153,7 +153,7 @@ DEPENDENCIES
   rake (~> 13.2)
   rspec (~> 3.13)
   rubocop-rickselby (~> 0.42)
-  zeitwerk (~> 2.6)
+  zeitwerk (~> 2.7)
 
 BUNDLED WITH
    2.5.18
