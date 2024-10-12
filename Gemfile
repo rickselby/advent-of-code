@@ -7,4 +7,4 @@ gem "matrix", "~> 0.4.2"
 gem "rake", "~> 13.2"
 gem "rspec", "~> 3.13"
 gem "rubocop-rickselby", "~> 0.42", require: false
-gem "zeitwerk", "~> 2.6"
+gem "zeitwerk", "~> 2.7"
