@@ -115,7 +115,7 @@ GEM
       rubocop (>= 1.0.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rickselby (0.41.0)
+    rubocop-rickselby (0.42.0)
       erb_lint (~> 0.6.0)
       rexml (~> 3.3)
       rubocop (~> 1.66.0)
@@ -152,7 +152,7 @@ DEPENDENCIES
   matrix (~> 0.4.2)
   rake (~> 13.2)
   rspec (~> 3.13)
-  rubocop-rickselby (~> 0.41)
+  rubocop-rickselby (~> 0.42)
   zeitwerk (~> 2.6)
 
 BUNDLED WITH
