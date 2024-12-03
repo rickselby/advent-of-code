@@ -20,5 +20,9 @@ module AdventOfCode
     def input_array
       @input_array ||= lines.map { |l| l.strip.chars }
     end
+
+    def single_line
+      @single_line ||= lines.map(&:strip).join
+    end
   end
 end

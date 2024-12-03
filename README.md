@@ -19,7 +19,7 @@ Runs the code against the input (`data/[year]/[day].txt`) and returns the result
 ## Progress
 
 ### 2024
-⭐⭐⭐⭐⭐
+⭐⭐⭐⭐⭐⭐
 
 ### 2023
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />

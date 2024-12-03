@@ -14,7 +14,7 @@ module AdventOfCode
         private
 
         def muls
-          lines.flat_map { |l| l.scan REGEX }
+          single_line.scan REGEX
         end
       end
     end
