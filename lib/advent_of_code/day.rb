@@ -14,15 +14,15 @@ module AdventOfCode
     protected
 
     def lines
-      @lines ||= @input.lines
+      @lines ||= @input.lines.map(&:strip)
     end
 
     def input_array
-      @input_array ||= lines.map { |l| l.strip.chars }
+      @input_array ||= lines.map(&:chars)
     end
 
     def single_line
-      @single_line ||= lines.map(&:strip).join
+      @single_line ||= lines.join
     end
   end
 end
