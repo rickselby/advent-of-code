@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe AdventOfCode::Year2024::Day05::Part1 do
+describe AdventOfCode::Year2024::Day05::Part2 do
   describe "result" do
     subject { described_class.new(data).result }
 
@@ -37,6 +37,6 @@ describe AdventOfCode::Year2024::Day05::Part1 do
       DATA
     end
 
-    it { is_expected.to eq 143 }
+    it { is_expected.to eq 123 }
   end
 end

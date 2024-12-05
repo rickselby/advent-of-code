@@ -6,7 +6,8 @@ module AdventOfCode
       # https://adventofcode.com/2024/day/5
       class Part1 < AdventOfCode::Day
         def result
-          updates.select { |u| update_valid? u }.sum { |u| middle_value u }
+          updates.select { |u| update_valid? u }
+                 .sum { |u| middle_value u }
         end
 
         private
