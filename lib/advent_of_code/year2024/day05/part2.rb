@@ -16,7 +16,7 @@ module AdventOfCode
         def fix(update)
           until update_valid?(update)
             rules.each do |rule|
-              # confirm both numbers are in the rule
+              # confirm both numbers are in the rule and in the wrong order
               next unless rule & update == rule && update & rule != rule
 
               # swap them?
