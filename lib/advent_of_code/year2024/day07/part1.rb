@@ -25,12 +25,19 @@ module AdventOfCode
           return (expected == current) ? expected : 0 if remaining.empty?
 
           value = remaining.shift
-          %i[+ *].each do |operator|
-            v = do_sums(expected, [current, value].reduce(operator), remaining)
+          functions.each do |f|
+            v = do_sums(expected, f.call(current, value), remaining)
             return v if v != 0
           end
 
           0
+        end
+
+        def functions
+          @functions ||= [
+            ->(a, b) { a + b },
+            ->(a, b) { a * b },
+          ]
         end
       end
     end
