@@ -10,10 +10,17 @@ module AdventOfCode
         def result
           i = 0
           loop do
-            break if Digest::MD5.hexdigest("#{single_line}#{i}").start_with?("00000")
+            break if Digest::MD5.hexdigest("#{single_line}#{i}").start_with?(prefix)
+
             i += 1
           end
           i
+        end
+
+        private
+
+        def prefix
+          @prefix ||= "00000"
         end
       end
     end
