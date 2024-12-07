@@ -29,6 +29,9 @@ Runs the code against the input (`data/[year]/[day].txt`) and returns the result
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
 ⭐❔⭐❔
 
+### 2015
+⭐
+
 ## Things to investigate
 
 * 2023, Day 17: Dijkstra's algorithm / A* algorithms

@@ -71,7 +71,7 @@ CLASS_TEMPLATE = <<~CODE_TEMPLATE
     module Year%<year>s
       module Day%<day>s
         # https://adventofcode.com/%<year>s/day/%<url_day>s
-        class Part%<part>s < AdventOfCode::Day
+        class Part%<part>s < AdventOfCode::Part
           def result
             # TODO: implement
           end
