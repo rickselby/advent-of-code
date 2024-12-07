@@ -7,7 +7,7 @@ module AdventOfCode
       class Part2 < AdventOfCode::Part
         def result
           floor = 0
-          single_line.chars.each_with_index do |char, i|
+          chars.each_with_index do |char, i|
             case char
             when "(" then floor += 1
             when ")" then floor -= 1

@@ -17,7 +17,7 @@ module AdventOfCode
           positions = Set.new
           positions << [x, y]
 
-          single_line.chars.each do |char|
+          chars.each do |char|
             x, y = move x, y, char
             positions << [x, y]
           end

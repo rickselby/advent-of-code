@@ -24,5 +24,9 @@ module AdventOfCode
     def single_line
       @single_line ||= lines.join
     end
+
+    def chars
+      @chars ||= single_line.chars
+    end
   end
 end
