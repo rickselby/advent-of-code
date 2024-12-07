@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module AdventOfCode
-  # Shared day functionality
-  class Day
+  # Shared part functionality
+  class Part
     def initialize(input)
       @input = input
     end

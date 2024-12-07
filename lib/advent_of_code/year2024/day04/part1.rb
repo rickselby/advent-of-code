@@ -6,7 +6,7 @@ module AdventOfCode
   module Year2024
     module Day04
       # https://adventofcode.com/2024/day/4
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         MATCH = "XMAS"
 
         def result

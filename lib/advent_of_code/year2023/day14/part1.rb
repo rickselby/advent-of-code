@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day14
       # https://adventofcode.com/2023/day/14
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           transpose(lines).then { |lines| lines.sum { |l| Line.new(l).count_slides } }
         end

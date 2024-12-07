@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2024
     module Day01
       # https://adventofcode.com/2024/day/1
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           distances.sum
         end

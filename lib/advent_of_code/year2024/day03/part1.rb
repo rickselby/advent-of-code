@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2024
     module Day03
       # https://adventofcode.com/2024/day/3
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         REGEX = /mul\((\d+),(\d+)\)/
 
         def result

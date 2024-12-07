@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day22
       # https://adventofcode.com/2023/day/22
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           @blocks = []
           @cubes = Set.new

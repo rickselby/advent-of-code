@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2024
     module Day04
       # https://adventofcode.com/2024/day/4
-      class Part2 < AdventOfCode::Day
+      class Part2 < AdventOfCode::Part
         def result
           grids.count { |g| match? g }
         end

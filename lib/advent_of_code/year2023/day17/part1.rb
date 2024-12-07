@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day17
       # https://adventofcode.com/2023/day/17
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def initialize(input)
           super
           @heat_loss_diff = 10

@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day20
       # https://adventofcode.com/2023/day/20
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           modules = Modules.new(lines)
           1000.times do

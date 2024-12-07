@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day06
       # https://adventofcode.com/2023/day/6
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def initialize(input)
           super([])
           parse_input input

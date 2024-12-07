@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day07
       # https://adventofcode.com/2023/day/7
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         HANDS = {
           five_of_a_kind:  7,
           four_of_a_kind:  6,

@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day08
       # https://adventofcode.com/2023/day/8
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def initialize(input)
           super
           @nodes = {}

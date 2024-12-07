@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day11
       # https://adventofcode.com/2023/day/11
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def initialize(input, factor = 2)
           super(input)
           @factor = factor

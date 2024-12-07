@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day10
       # https://adventofcode.com/2023/day/10
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           parse_map
           path_length / 2

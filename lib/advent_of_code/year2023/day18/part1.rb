@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day18
       # https://adventofcode.com/2023/day/18
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           @coords = []
           parse_lines

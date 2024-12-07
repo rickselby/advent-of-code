@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day21
       # https://adventofcode.com/2023/day/21
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def initialize(input)
           super
           @map = lines.each_with_index.map do |l, i|

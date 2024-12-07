@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day19
       # https://adventofcode.com/2023/day/19
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           @ruleset = {}
           @parts = []

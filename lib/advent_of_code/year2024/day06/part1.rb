@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2024
     module Day06
       # https://adventofcode.com/2024/day/6
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           count walk(*parse_map, :up)
         end

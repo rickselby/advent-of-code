@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day09
       # https://adventofcode.com/2023/day/9
-      class Part2 < AdventOfCode::Day
+      class Part2 < AdventOfCode::Part
         def result
           lines.sum { |l| prev_diff l.split.map(&:to_i) }
         end

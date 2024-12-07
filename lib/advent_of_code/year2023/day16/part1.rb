@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day16
       # https://adventofcode.com/2023/day/16
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           @checked = Set.new
           energise 0, 0, :east

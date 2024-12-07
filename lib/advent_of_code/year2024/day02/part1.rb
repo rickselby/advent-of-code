@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2024
     module Day02
       # https://adventofcode.com/2024/day/2
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         def result
           reports.count { |r| safe? r }
         end

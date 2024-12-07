@@ -4,7 +4,7 @@ module AdventOfCode
   module Year2023
     module Day05
       # https://adventofcode.com/2023/day/5
-      class Part1 < AdventOfCode::Day
+      class Part1 < AdventOfCode::Part
         MAPS = %i[
           seed-to-soil
           soil-to-fertilizer
