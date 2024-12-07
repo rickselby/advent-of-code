@@ -12,25 +12,24 @@ module AdventOfCode
         private
 
         def positions
-          x = 0
-          y = 0
+          santa = [0, 0]
           positions = Set.new
-          positions << [x, y]
+          positions << santa
 
           chars.each do |char|
-            x, y = move x, y, char
-            positions << [x, y]
+            santa = move santa, char
+            positions << santa
           end
 
           positions
         end
 
-        def move(x, y, dir)
+        def move(pos, dir)
           case dir
-          when "^" then [x, y - 1]
-          when "v" then [x, y + 1]
-          when ">" then [x + 1, y]
-          when "<" then [x - 1, y]
+          when "^" then [pos[0], pos[1] - 1]
+          when "v" then [pos[0], pos[1] + 1]
+          when ">" then [pos[0] + 1, pos[1]]
+          when "<" then [pos[0] - 1, pos[1]]
           end
         end
       end
