@@ -31,8 +31,12 @@ module AdventOfCode
           add_antinode b - diff
         end
 
+        def in_map?(node)
+          (0...max_x).cover?(node[0]) && (0...max_y).cover?(node[1])
+        end
+
         def add_antinode(node)
-          return unless (0...max_x).cover?(node[0]) && (0...max_y).cover?(node[1])
+          return unless in_map? node
 
           @antinodes << node
         end
