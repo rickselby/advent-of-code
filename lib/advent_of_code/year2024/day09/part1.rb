@@ -16,7 +16,7 @@ module AdventOfCode
         end
 
         def compact(array)
-          nils = array.map.with_index { |v, i| v.nil? ? i : nil }.compact
+          nils = nils(array)
           loop do
             v = array.pop
             i = nils.shift
@@ -26,6 +26,10 @@ module AdventOfCode
             break if nils.first > array.size
           end
           array
+        end
+
+        def nils(array)
+          array.map.with_index { |v, i| v.nil? ? i : nil }.compact
         end
 
         def filesystem
