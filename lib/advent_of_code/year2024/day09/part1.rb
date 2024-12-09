@@ -16,13 +16,14 @@ module AdventOfCode
         end
 
         def compact(array)
+          nils = array.map.with_index { |v, i| v.nil? ? i : nil }.compact
           loop do
             v = array.pop
-            i = array.find_index(nil)
+            i = nils.shift
             array[i] = v
 
             array.pop while array.last.nil?
-            break if array.none?(&:nil?)
+            break if nils.first > array.size
           end
           array
         end
