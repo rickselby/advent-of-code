@@ -32,7 +32,7 @@ module AdventOfCode
           if get_arg(argument).nil?
             @lines << line
           else
-            @wires[target] = get_arg(argument)
+            @wires[target] = get_arg(argument) unless @wires.key? target
           end
         end
 

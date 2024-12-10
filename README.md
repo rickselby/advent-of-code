@@ -31,7 +31,7 @@ Runs the code against the input (`data/[year]/[day].txt`) and returns the result
 
 ### 2015
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
-⭐⭐⭐
+⭐⭐⭐⭐
 
 ## Things to investigate
 
