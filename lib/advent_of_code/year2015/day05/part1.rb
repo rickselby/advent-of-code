@@ -11,7 +11,7 @@ module AdventOfCode
 
         def nice?(string)
           return false if %w[ab cd pq xy].any? { |s| string.include? s }
-          return false unless string.match? /(.)\1/
+          return false unless string.match?(/(.)\1/)
 
           string.scan(/[aeiou]/).size >= 3
         end
