@@ -29,9 +29,13 @@ module AdventOfCode
         end
 
         def find_region(coords)
-          region = Region.new(val(coords))
+          region = new_region(coords)
           build_region region, coords
           region
+        end
+
+        def new_region(coords)
+          Region.new val coords
         end
 
         def build_region(region, coords)
