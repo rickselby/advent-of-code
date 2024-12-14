@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 describe AdventOfCode::Helpers::Map do
+  let(:coords) { AdventOfCode::Helpers::Coordinates.new(1, 2) }
   let(:klass) { described_class.new(map.to_a) }
   let(:map) do
     [
@@ -12,16 +13,16 @@ describe AdventOfCode::Helpers::Map do
     ]
   end
 
-  describe "#dig" do
-    subject { klass.dig(1, 2) }
+  describe "#[]" do
+    subject { klass[coords] }
 
     it { is_expected.to eq 10 }
   end
 
   describe "#set" do
     it "sets a value" do
-      klass.set(2, 1, :foo)
-      expect(klass.map[1][2]).to eq :foo
+      klass.set(coords, :foo)
+      expect(klass[coords]).to eq :foo
     end
   end
 
@@ -101,22 +102,22 @@ describe AdventOfCode::Helpers::Map do
   end
 
   describe "#in_range?" do
-    example { expect(klass).to be_in_range(1, 2) }
-    example { expect(klass).not_to be_in_range(-1, 2) }
-    example { expect(klass).not_to be_in_range(1, 5) }
-    example { expect(klass).not_to be_in_range(4, 1) }
+    example { expect(klass).to be_in_range(coords) }
+    example { expect(klass).not_to be_in_range(AdventOfCode::Helpers::Coordinates.new(-1, 2)) }
+    example { expect(klass).not_to be_in_range(AdventOfCode::Helpers::Coordinates.new(1, 5)) }
+    example { expect(klass).not_to be_in_range(AdventOfCode::Helpers::Coordinates.new(4, 1)) }
   end
 
   describe "#out_of_range?" do
-    example { expect(klass).not_to be_out_of_range(1, 2) }
-    example { expect(klass).to be_out_of_range(-1, 2) }
-    example { expect(klass).to be_out_of_range(1, 5) }
-    example { expect(klass).to be_out_of_range(4, 1) }
+    example { expect(klass).not_to be_out_of_range(coords) }
+    example { expect(klass).to be_out_of_range(AdventOfCode::Helpers::Coordinates.new(-1, 2)) }
+    example { expect(klass).to be_out_of_range(AdventOfCode::Helpers::Coordinates.new(1, 5)) }
+    example { expect(klass).to be_out_of_range(AdventOfCode::Helpers::Coordinates.new(4, 1)) }
   end
 
   describe "#find" do
-    example { expect(klass.find(5)).to eq [0, 1] }
-    example { expect(klass.find(11)).to eq [2, 2] }
+    example { expect(klass.find(5)).to eq AdventOfCode::Helpers::Coordinates.new(0, 1) }
+    example { expect(klass.find(11)).to eq AdventOfCode::Helpers::Coordinates.new(2, 2) }
   end
 
   describe "#rows" do

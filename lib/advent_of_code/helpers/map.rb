@@ -10,12 +10,12 @@ module AdventOfCode
         @map = input_array
       end
 
-      def dig(x, y)
-        @map.dig(y, x)
+      def [](coords)
+        @map.dig(coords.y, coords.x)
       end
 
-      def set(x, y, value)
-        @map[y][x] = value
+      def set(coords, value)
+        @map[coords.y][coords.x] = value
       end
 
       def width
@@ -47,18 +47,18 @@ module AdventOfCode
         padded.transpose.map(&:compact)
       end
 
-      def in_range?(x, y)
-        !out_of_range? x, y
+      def in_range?(coords)
+        !out_of_range? coords
       end
 
-      def out_of_range?(x, y)
-        x.negative? || y.negative? || x >= width || y >= height
+      def out_of_range?(coords)
+        coords.x.negative? || coords.y.negative? || coords.x >= width || coords.y >= height
       end
 
       def find(value)
         @map.each_with_index do |row, y|
           x = row.index(value)
-          return [x, y] unless x.nil?
+          return Coordinates.new(x, y) unless x.nil?
         end
 
         nil
