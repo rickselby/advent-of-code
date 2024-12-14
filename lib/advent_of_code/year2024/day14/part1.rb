@@ -29,8 +29,8 @@ module AdventOfCode
 
         def final_pos(line)
           x, y, vx, vy = line.scan(/-?\d+/).map(&:to_i)
-          vx *= SECONDS
-          vy *= SECONDS
+          vx *= self.class::SECONDS
+          vy *= self.class::SECONDS
           [(x + vx) % @width, (y + vy) % @height]
         end
 
