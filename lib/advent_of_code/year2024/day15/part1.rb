@@ -7,22 +7,23 @@ module AdventOfCode
       class Part1 < AdventOfCode::Part
         def result
           map, instructions = input_parts
-          @map = map.reject(&:empty?).map(&:chars)
+          @map = build_map(map)
           move instructions
           gps
         end
 
         private
 
+        def build_map(map)
+          map.reject(&:empty?).map(&:chars)
+        end
+
         def input_parts
           lines.slice_when { |l, _| l == "" }.map(&:to_a)
         end
 
         def move(instructions)
-          instructions.join.chars.each do |instruction|
-            coords = start
-            try_move coords, instruction
-          end
+          instructions.join.chars.each { |instruction| try_move start, instruction }
         end
 
         def try_move(coords, instruction, nested: false)
