@@ -26,37 +26,49 @@ module AdventOfCode
         def try_move(coords, instruction, nested: false)
           targets = coords.map { |c| next_coords c, instruction }
 
-          return false if targets.any? { |t| @map[t[1]][t[0]] == "#" }
+          return false if cannot_move targets
 
-          # get more coords to check if necessary
+          # get more coords to check if necessary (only when moving up or down)
+          targets = add_more_targets targets, instruction
 
-          if %w[^ v].include?(instruction)
-            targets.each do |c|
-              case @map[c[1]][c[0]]
-              when "[" then targets << next_coords(c, ">")
-              when "]" then targets << next_coords(c, "<")
-              end
-              targets.uniq!
-            end
-          end
+          # some columns might be ok to move, some might now...
+          need_to_check = targets.reject { |t| can_move t }
 
-          need_to_check = targets.reject { |t| @map[t[1]][t[0]] == "." }
+          return false unless need_to_check.empty? || try_move(need_to_check, instruction, nested: true)
 
-          unless need_to_check.empty?
-            return false unless try_move(need_to_check, instruction, nested: true)
-          end
-
-          coords.each do |c|
-            target = next_coords c, instruction
-            update_map c, target, !nested
-          end
-
-          if coords.length != targets.length
-            missing = targets - coords.map { |c| next_coords c, instruction }
-            missing.each { |c| @map[c[1]][c[0]] = "." }
-          end
+          do_updates coords, targets, instruction, nested
 
           true
+        end
+
+        def cannot_move(targets)
+          targets.any? { |t| @map[t[1]][t[0]] == "#" }
+        end
+
+        def can_move(target)
+          @map[target[1]][target[0]] == "."
+        end
+
+        def add_more_targets(targets, instruction)
+          return targets unless %w[^ v].include?(instruction)
+
+          targets.each do |c|
+            case @map[c[1]][c[0]]
+            when "[" then targets << next_coords(c, ">")
+            when "]" then targets << next_coords(c, "<")
+            end
+            targets.uniq!
+          end
+          targets
+        end
+
+        def do_updates(coords, targets, instruction, nested)
+          coords.each { |c| update_map c, next_coords(c, instruction), !nested }
+
+          # clear any columns that have finished moving
+          return unless coords.length != targets.length
+
+          (targets - coords.map { |c| next_coords c, instruction }).each { |c| @map[c[1]][c[0]] = "." }
         end
 
         def possible_move?(coords)
