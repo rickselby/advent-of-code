@@ -8,17 +8,24 @@ module AdventOfCode
         def result
           @map = AdventOfCode::Helpers::Map.new(input_array)
           @costs = { start => 0 }
-          parse start, 0
-          @costs[@map.find("E")]
-          ends.map { |e| @costs[e] }.compact.min
+          @check = [start]
+          do_checks
+          ends.filter_map { |e| @costs[e] }.min
         end
 
         private
 
-        def parse(cwd, score)
-          check_move cwd.rotate(:cw), score + 1000
-          check_move cwd.rotate(:ccw), score + 1000
-          check_move cwd.forward, score + 1
+        def do_checks
+          loop do
+            cwd = @check.shift
+            score = @costs[cwd]
+
+            check_move cwd.rotate(:cw), score + 1000
+            check_move cwd.rotate(:ccw), score + 1000
+            check_move cwd.forward, score + 1
+
+            break if @check.empty?
+          end
         end
 
         def check_move(cwd, score)
@@ -26,7 +33,7 @@ module AdventOfCode
           return if @costs.key?(cwd) && @costs[cwd] <= score
 
           @costs[cwd] = score
-          parse cwd, score
+          @check << cwd
         end
 
         def start
@@ -53,7 +60,7 @@ module AdventOfCode
           end
 
           def forward
-            self.dup.move(direction)
+            dup.move(direction)
           end
 
           ROTATE_CW = { north: :east, east: :south, south: :west, west: :north }.freeze
@@ -67,7 +74,7 @@ module AdventOfCode
           end
 
           def eql?(other)
-            self.==(other)
+            self == other
           end
 
           def hash

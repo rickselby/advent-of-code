@@ -51,7 +51,7 @@ describe AdventOfCode::Year2024::Day16::Part1 do
         DATA
       end
 
-      it { is_expected.to eq 11048 }
+      it { is_expected.to eq 11_048 }
     end
   end
 end
