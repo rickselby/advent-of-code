@@ -7,22 +7,20 @@ module AdventOfCode
       class Part1 < AdventOfCode::Part
         def result
           @out = []
-          registers, program = lines.slice_when { |a, _| a == "" }.to_a
-          load_registers registers
-          run_program program
+          load_registers
+          run_program
           @out.join ","
         end
 
         private
 
-        def load_registers(registers)
-          @a = registers[0].scan(/\d+/).map(&:to_i).first
-          @b = registers[1].scan(/\d+/).map(&:to_i).first
-          @c = registers[2].scan(/\d+/).map(&:to_i).first
+        def load_registers
+          @a = lines[0].scan(/\d+/).map(&:to_i).first
+          @b = lines[1].scan(/\d+/).map(&:to_i).first
+          @c = lines[2].scan(/\d+/).map(&:to_i).first
         end
 
-        def run_program(program)
-          program = program.last.scan(/[\d,]+/).first.split(",").map(&:to_i)
+        def run_program
           ptr = 0
           loop do
             instruction = program[ptr]
@@ -57,6 +55,10 @@ module AdventOfCode
           when 5 then @b
           when 6 then @c
           end
+        end
+
+        def program
+          @program ||= lines.last.scan(/[\d,]+/).first.split(",").map(&:to_i)
         end
       end
     end
