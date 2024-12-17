@@ -21,31 +21,45 @@ module AdventOfCode
         end
 
         def run_program
-          ptr = 0
+          @ptr = 0
           loop do
-            instruction = program[ptr]
-            operand = program[ptr + 1]
-
-            advance = true
-            case instruction
-            when 0 then @a /= (2**combo(operand))
-            when 1 then @b ^= operand
-            when 2 then @b = combo(operand) % 8
-            when 3
-              break if @a.zero?
-
-              ptr = operand
-              advance = false
-            when 4 then @b ^= @c
-            when 5 then @out << (combo(operand) % 8)
-            when 6 then @b = @a / (2**combo(operand))
-            when 7 then @c = @a / (2**combo(operand))
-            end
-
-            ptr += 2 if advance
-
-            return if ptr >= program.length
+            @advance = true
+            run_instruction program[@ptr], program[@ptr + 1]
+            @ptr += 2 if @advance
+            return if @ptr >= program.length
           end
+        end
+
+        def run_instruction(instruction, operand) # rubocop:disable Metrics/CyclomaticComplexity
+          case instruction
+          when 0 then @a = dv(operand)
+          when 1 then bxl(operand)
+          when 2 then @b = st(operand)
+          when 3 then jnz(operand)
+          when 4 then @b ^= @c
+          when 5 then @out << st(operand)
+          when 6 then @b = dv(operand)
+          when 7 then @c = dv(operand)
+          end
+        end
+
+        def dv(operand)
+          @a / (2**combo(operand))
+        end
+
+        def bxl(operand)
+          @b ^= operand
+        end
+
+        def st(operand)
+          combo(operand) % 8
+        end
+
+        def jnz(operand)
+          return if @a.zero?
+
+          @ptr = operand
+          @advance = false
         end
 
         def combo(operand)
