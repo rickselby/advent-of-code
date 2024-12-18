@@ -34,6 +34,14 @@ module AdventOfCode
       def ==(other)
         coordinates == other.coordinates
       end
+
+      def eql?(other)
+        self == other
+      end
+
+      def hash
+        [x, y].hash
+      end
     end
   end
 end
