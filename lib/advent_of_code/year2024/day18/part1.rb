@@ -13,7 +13,7 @@ module AdventOfCode
 
         def result
           @map = AdventOfCode::Helpers::Map.new(make_map)
-          add_blocks
+          add_blocks @bytes
           start = AdventOfCode::Helpers::Coordinates.new(0, 0)
           @costs = { start => 0 }
           @check = [start]
@@ -29,8 +29,8 @@ module AdventOfCode
           map
         end
 
-        def add_blocks
-          lines.first(@bytes).each do |line|
+        def add_blocks(limit)
+          lines.first(limit).each do |line|
             @map.set(AdventOfCode::Helpers::Coordinates.new(*line.split(",").map(&:to_i)), "#")
           end
         end
