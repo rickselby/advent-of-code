@@ -20,6 +20,8 @@ module AdventOfCode
 
         private
 
+        MOVES = %w[E .].freeze
+
         def set_route
           coords = @map.find "S"
           cost = 0
@@ -31,17 +33,6 @@ module AdventOfCode
 
             coords = next_coords.first
             cost += 1
-          end
-        end
-
-        MOVES = %w[E .].freeze
-
-        def set_cost(coords, cost)
-          @map.set coords, cost
-          coords.adjacent.each do |c|
-            next unless MOVES.include? @map[c]
-
-            set_cost c, cost + 1
           end
         end
 
