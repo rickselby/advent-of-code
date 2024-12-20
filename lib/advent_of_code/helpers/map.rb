@@ -11,6 +11,8 @@ module AdventOfCode
       end
 
       def [](coords)
+        return nil if out_of_range? coords
+
         @map.dig(coords.y, coords.x)
       end
 
@@ -74,6 +76,18 @@ module AdventOfCode
 
       def count(value)
         map.sum { |row| row.select { |c| c == value }.length }
+      end
+
+      def each_coord
+        @map.each_with_index do |row, y|
+          row.each_with_index do |_, x|
+            yield Coordinates.new(x, y)
+          end
+        end
+      end
+
+      def print
+        map.each { |row| puts row.join }
       end
 
       private
