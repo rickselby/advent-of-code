@@ -47,16 +47,12 @@ module AdventOfCode
         end
 
         def check_next_coord(coord, cost)
-          return if invalid_coordinates? coord
+          return if @map.out_of_range? coord
           return if @map[coord] == "#"
           return if @costs.key?(coord) && @costs[coord] <= cost
 
           @costs[coord] = cost
           @check << coord
-        end
-
-        def invalid_coordinates?(coords)
-          coords.x.negative? || coords.y.negative? || coords.y > @size || coords.x > @size
         end
       end
     end
