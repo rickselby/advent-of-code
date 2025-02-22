@@ -17,6 +17,7 @@ module AdventOfCode
           down:  :left,
           left:  :up,
         }.freeze
+        private_constant :ROTATE
 
         def parse_map
           map = {}

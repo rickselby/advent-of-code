@@ -57,6 +57,7 @@ module AdventOfCode
           south: { left: :east, right: :west },
           west:  { left: :south, right: :north },
         }.freeze
+        private_constant :TURNS
 
         def mirror(x, y, direction, mirror)
           energise(*continue(x, y, MIRRORS[mirror][direction]))
@@ -76,6 +77,7 @@ module AdventOfCode
             west:  :north,
           },
         }.freeze
+        private_constant :MIRRORS
 
         def invalid_coordinates?(x, y)
           x.negative? || y.negative? || y == input_array.size || x == input_array[0].size

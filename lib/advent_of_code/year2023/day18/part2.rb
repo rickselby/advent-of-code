@@ -8,6 +8,7 @@ module AdventOfCode
         private
 
         DIRECTIONS = { "0" => "R", "1" => "D", "2" => "L", "3" => "U" }.freeze
+        private_constant :DIRECTIONS
 
         def parse_line(line)
           hex_string = line.split.last
