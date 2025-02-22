@@ -13,6 +13,7 @@ module AdventOfCode
         private
 
         CORNERS = %w[J L F 7].freeze
+        private_constant :CORNERS
 
         def corners
           corners = [@start]

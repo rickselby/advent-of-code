@@ -21,6 +21,7 @@ module AdventOfCode
         private
 
         MOVES = %w[E .].freeze
+        private_constant :MOVES
 
         def set_route
           coords = @map.find "S"

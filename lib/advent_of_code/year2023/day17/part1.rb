@@ -21,6 +21,7 @@ module AdventOfCode
         private
 
         DIRECTIONS = %i[north east south west].freeze
+        private_constant :DIRECTIONS
 
         def target_coords
           @target_coords ||= [input_array[0].size - 1, input_array.size - 1]
@@ -102,6 +103,7 @@ module AdventOfCode
         end
 
         BACKWARDS = { north: :south, east: :west, south: :north, west: :east }.freeze
+        private_constant :BACKWARDS
 
         def backwards?(direction, last_direction)
           direction == BACKWARDS[last_direction]
