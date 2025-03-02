@@ -26,11 +26,7 @@ module AdventOfCode
         def can_turn_now?(direction, history)
           return true if history.empty?
 
-          if history.size >= 4 && history.last(4).uniq.size == 1
-            true
-          else
-            direction == history.last
-          end
+          (history.size >= 4 && history.last(4).uniq.size == 1) || direction == history.last
         end
 
         def space_to_turn?(direction, history, x, y)
