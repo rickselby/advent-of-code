@@ -55,7 +55,7 @@ module AdventOfCode
               coords << [row, col]
             end
           end
-          !symbols.intersection(coords).empty?
+          symbols.intersect?(coords)
         end
       end
     end
