@@ -57,7 +57,7 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    matrix (0.4.2)
+    matrix (0.4.3)
     minitest (5.25.5)
     nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
@@ -167,7 +167,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler-audit (~> 0.9)
-  matrix (~> 0.4.2)
+  matrix (~> 0.4.3)
   rake (~> 13.3)
   rspec (~> 3.13)
   rubocop-rickselby (~> 0.57)
