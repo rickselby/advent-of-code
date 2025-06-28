@@ -46,7 +46,7 @@ module AdventOfCode
 
         def get_distances(galaxies)
           galaxies.each_with_index.with_object([]) do |(coords, index), distances|
-            galaxies[index + 1..].each do |next_coords|
+            galaxies[(index + 1)..].each do |next_coords|
               distances << distance(coords, next_coords)
             end
           end

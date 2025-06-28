@@ -50,8 +50,8 @@ module AdventOfCode
         # Check there is a symbol in the coordinates around the number
         def valid?(number_row, col1, col2)
           coords = []
-          (number_row - 1..number_row + 1).each do |row|
-            (col1 - 1..col2 + 1).each do |col|
+          ((number_row - 1)..(number_row + 1)).each do |row|
+            ((col1 - 1)..(col2 + 1)).each do |col|
               coords << [row, col]
             end
           end
