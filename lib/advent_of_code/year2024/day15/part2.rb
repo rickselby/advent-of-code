@@ -8,7 +8,7 @@ module AdventOfCode
         private
 
         def move(instructions)
-          instructions.join.chars.each { |instruction| try_move [start], instruction }
+          instructions.join.chars.each { |instruction| try_move? [start], instruction }
         end
 
         def build_map(map)
@@ -23,7 +23,7 @@ module AdventOfCode
           end
         end
 
-        def try_move(coords, instruction, nested: false)
+        def try_move?(coords, instruction, nested: false)
           targets = coords.map { |c| next_coords c, instruction }
 
           return false if cannot_move targets
@@ -32,9 +32,9 @@ module AdventOfCode
           targets = add_more_targets targets, instruction
 
           # some columns might be ok to move, some might now...
-          need_to_check = targets.reject { |t| can_move t }
+          need_to_check = targets.reject { |t| can_move? t }
 
-          return false unless need_to_check.empty? || try_move(need_to_check, instruction, nested: true)
+          return false unless need_to_check.empty? || try_move?(need_to_check, instruction, nested: true)
 
           do_updates coords, targets, instruction, nested
 
@@ -45,7 +45,7 @@ module AdventOfCode
           targets.any? { |t| @map[t[1]][t[0]] == "#" }
         end
 
-        def can_move(target)
+        def can_move?(target)
           @map[target[1]][target[0]] == "."
         end
 

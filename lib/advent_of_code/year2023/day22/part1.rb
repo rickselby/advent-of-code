@@ -51,14 +51,14 @@ module AdventOfCode
           loop do
             changes = false
             @blocks.each_with_index do |b, i|
-              changed = settle b, i
+              changed = settle_changes? b, i
               changes ||= changed
             end
             break unless changes
           end
         end
 
-        def settle(block, index)
+        def settle_changes?(block, index)
           block.each { |coords| @cubes.delete coords }
           block = drop_block block
           block.each { |coords| @cubes << coords }

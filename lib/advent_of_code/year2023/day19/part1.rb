@@ -68,7 +68,7 @@ module AdventOfCode
           }
         end
 
-        def handle_continue(part, continue)
+        def handle_continue(part, continue) # rubocop:disable Naming/PredicateMethod
           if %i[A R].include? continue
             continue == :A
           else

@@ -32,7 +32,7 @@ module AdventOfCode
           new_list = Set.new
           coords_list.each do |coords|
             possible_coords(coords).each do |poss|
-              next if invalid_coords poss
+              next if invalid_coords? poss
 
               new_list << poss unless @map[poss[1]][poss[0]] == "#"
             end
@@ -49,7 +49,7 @@ module AdventOfCode
           ]
         end
 
-        def invalid_coords(coords)
+        def invalid_coords?(coords)
           coords[0].negative? || coords[1].negative? || coords[0] >= @map[0].size || coords[1] >= @map.size
         end
       end

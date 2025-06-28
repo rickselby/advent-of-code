@@ -25,13 +25,13 @@ module AdventOfCode
           return @state_cache[cache_key] if @state_cache.key? cache_key
 
           # At the end of the line - Check if this iteration was a match
-          return match? g_idx, g_len if s_idx == @springs.size
+          return match g_idx, g_len if s_idx == @springs.size
 
           # Get the result for this position (and cache it!)
           result(s_idx, g_idx, g_len).tap { |r| @state_cache[cache_key] = r }
         end
 
-        def match?(g_idx, g_len)
+        def match(g_idx, g_len)
           if g_idx == @groups.size - 1 && g_len == @groups[g_idx]
             g_idx += 1
             g_len = 0
