@@ -23,16 +23,16 @@ module AdventOfCode
         end
 
         def move(instructions)
-          instructions.join.chars.each { |instruction| try_move start, instruction }
+          instructions.join.chars.each { |instruction| try_move? start, instruction }
         end
 
-        def try_move(coords, instruction, nested: false)
+        def try_move?(coords, instruction, nested: false)
           target = next_coords coords, instruction
           case @map[target[1]][target[0]]
           when "." then nil # continue to making the move
           when "#" then return false
           else # @, O
-            return false unless try_move target, instruction, nested: true
+            return false unless try_move? target, instruction, nested: true
           end
 
           update_map coords, target, !nested

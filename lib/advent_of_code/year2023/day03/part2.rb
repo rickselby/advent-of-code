@@ -54,8 +54,8 @@ module AdventOfCode
         # Check if there is an asterisk next to this number
         def check_for_possible_gears(number_row, col1, col2, number)
           coords = []
-          (number_row - 1..number_row + 1).each do |row|
-            (col1 - 1..col2 + 1).each do |col|
+          ((number_row - 1)..(number_row + 1)).each do |row|
+            ((col1 - 1)..(col2 + 1)).each do |col|
               coords << [row, col]
             end
           end

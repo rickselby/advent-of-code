@@ -40,7 +40,7 @@ module AdventOfCode
           if comparison == :>
             [(value + 1)..range.end, range.begin..value]
           else
-            [(range.begin..value - 1), (value..range.end)]
+            [(range.begin..(value - 1)), (value..range.end)]
           end
         end
 
