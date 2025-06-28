@@ -10,7 +10,7 @@ module AdventOfCode
         def count_cards(hand)
           cards = super
           return cards unless cards.key?("J")
-          return cards if cards.count == 1
+          return cards if cards.one?
 
           move_jacks cards
         end
