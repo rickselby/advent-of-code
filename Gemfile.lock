@@ -169,8 +169,8 @@ DEPENDENCIES
   matrix (~> 0.4.3)
   rake (~> 13.3)
   rspec (~> 3.13)
-  rubocop-rickselby (~> 0.61)
+  rubocop-rickselby (~> 0.62)
   zeitwerk (~> 2.7)
 
 BUNDLED WITH
-   2.6.2
+   2.7.2
