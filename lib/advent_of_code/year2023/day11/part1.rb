@@ -39,7 +39,7 @@ module AdventOfCode
 
         def get_galaxies(rows)
           rows.each_with_index.with_object([]) do |(row, row_index), galaxies|
-            (0...row.length).select {  row[it] == "#" }
+            (0...row.length).select { row[it] == "#" }
                             .each { galaxies << [row_index, it] }
           end
         end
