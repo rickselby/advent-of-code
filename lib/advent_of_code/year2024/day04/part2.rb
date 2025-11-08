@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2024/day/4
       class Part2 < AdventOfCode::Part
         def result
-          grids.count { |g| match? g }
+          grids.count { match? it }
         end
 
         private

@@ -17,7 +17,7 @@ module AdventOfCode
 
           until files.empty?
             file_indexes = files.pop
-            nils_index = nils.find_index { |n| n.size >= file_indexes.size }
+            nils_index = nils.find_index { it.size >= file_indexes.size }
             next if nils_index.nil? || nils[nils_index].first > file_indexes.first
 
             move_file array, file_indexes, nils, nils_index

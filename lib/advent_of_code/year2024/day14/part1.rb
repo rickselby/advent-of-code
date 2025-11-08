@@ -14,17 +14,17 @@ module AdventOfCode
         end
 
         def result
-          lines.map { |l| final_pos l }
-               .reject { |c| in_middle? c }
-               .partition { |c| c[0] < x_mid }
-               .map { |a| partition_and_count_and_multiply a }
+          lines.map { final_pos it }
+               .reject { in_middle? it }
+               .partition { it[0] < x_mid }
+               .map { partition_and_count_and_multiply it }
                .reduce(1, :*)
         end
 
         private
 
         def partition_and_count_and_multiply(array)
-          array.partition { |c| c[1] < y_mid }.map(&:size).reduce(1, :*)
+          array.partition { it[1] < y_mid }.map(&:size).reduce(1, :*)
         end
 
         def final_pos(line)

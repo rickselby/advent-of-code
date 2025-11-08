@@ -41,7 +41,7 @@ module AdventOfCode
         end
 
         def grouped_towels
-          @grouped_towels ||= towels.group_by { |t| t[0] }
+          @grouped_towels ||= towels.group_by { it[0] }
         end
       end
     end

@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/15
       class Part1 < AdventOfCode::Part
         def result
-          steps.sum { |s| hash s }
+          steps.sum { hash it }
         end
 
         def hash(string)

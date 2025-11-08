@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2024/day/13
       class Part1 < AdventOfCode::Part
         def result
-          machine_lines.sum { |m| coins_for m }
+          machine_lines.sum { coins_for it }
         end
 
         private

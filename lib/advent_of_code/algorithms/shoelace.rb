@@ -36,7 +36,7 @@ module AdventOfCode
       private
 
       def vectors
-        @vectors ||= @coordinates.map { |c| Vector.elements c }
+        @vectors ||= @coordinates.map { Vector.elements it }
       end
 
       def shoelace

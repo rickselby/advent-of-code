@@ -27,7 +27,7 @@ module AdventOfCode
           row_value = check_map map, :row
           return row_value unless row_value.nil?
 
-          col_value = transpose(map).then { |m| check_map m, :col }
+          col_value = transpose(map).then { check_map it, :col }
           return col_value unless col_value.nil?
 
           nil
@@ -59,7 +59,7 @@ module AdventOfCode
 
         def transpose(map)
           map.map(&:chars)
-             .then { |m| m[0].zip(*m[1..]) }
+             .then { it[0].zip(*it[1..]) }
              .map(&:join)
         end
 

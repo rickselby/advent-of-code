@@ -6,11 +6,11 @@ module AdventOfCode
       # https://adventofcode.com/2015/day/5
       class Part1 < AdventOfCode::Part
         def result
-          lines.count { |l| nice? l }
+          lines.count { nice? it }
         end
 
         def nice?(string)
-          return false if %w[ab cd pq xy].any? { |s| string.include? s }
+          return false if %w[ab cd pq xy].any? { string.include? it }
           return false unless string.match?(/(.)\1/)
 
           string.scan(/[aeiou]/).size >= 3

@@ -11,7 +11,7 @@ module AdventOfCode
           @states = []
           @index = nil
           index = find_index transpose lines
-          @states[index].sum { |l| sum l }
+          @states[index].sum { sum it }
         end
 
         private
@@ -21,13 +21,13 @@ module AdventOfCode
         end
 
         def sum(line)
-          line.each_with_index.select { |c| c[0] == "O" }.sum { |_, i| line.size - i }
+          line.each_with_index.select { it[0] == "O" }.sum { |_, i| line.size - i }
         end
 
         def find_index(map)
           LOOP_AMOUNT.times do |loop_index|
             # Rotate and slide 4 times
-            4.times { map = rotate(map.map { |l| Line.new(l).slide }) }
+            4.times { map = rotate(map.map { Line.new(it).slide }) }
 
             if @states.include? map
               previous_index = @states.index map

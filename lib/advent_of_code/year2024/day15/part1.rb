@@ -23,7 +23,7 @@ module AdventOfCode
         end
 
         def move(instructions)
-          instructions.join.chars.each { |instruction| try_move? start, instruction }
+          instructions.join.chars.each { try_move? start, it }
         end
 
         def try_move?(coords, instruction, nested: false)

@@ -15,7 +15,7 @@ module AdventOfCode
           @cuts = []
           set_route
           find_cuts
-          @cuts.count { |v| v >= @min_save }
+          @cuts.count { it >= @min_save }
         end
 
         private
@@ -29,7 +29,7 @@ module AdventOfCode
           loop do
             @map.set coords, cost
 
-            next_coords = coords.adjacent.select { |c| MOVES.include? @map[c] }
+            next_coords = coords.adjacent.select { MOVES.include? @map[it] }
             break if next_coords.empty?
 
             coords = next_coords.first
@@ -39,7 +39,7 @@ module AdventOfCode
 
         def find_cuts
           @map.each_coord do |coord|
-            values = coord.adjacent.filter_map { |c| @map[c] }.reject { |v| v == "#" }
+            values = coord.adjacent.filter_map { @map[it] }.reject { it == "#" }
             next if values.size < 2
 
             @cuts << (values.max - values.min - 2)

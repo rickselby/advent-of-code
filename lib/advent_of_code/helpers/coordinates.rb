@@ -21,14 +21,14 @@ module AdventOfCode
         when :right, :east then @x += 1
         when :up, :north then @y -= 1
         when :down, :south then @y += 1
-        when /_/ then direction.to_s.split("_").each { |d| move d.to_sym }
+        when /_/ then direction.to_s.split("_").each { move it.to_sym }
         end
 
         self
       end
 
       def adjacent
-        %i[north east south west].map { |d| dup.move d }
+        %i[north east south west].map { dup.move it }
       end
 
       def ==(other)

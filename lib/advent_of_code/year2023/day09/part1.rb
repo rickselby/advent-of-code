@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/9
       class Part1 < AdventOfCode::Part
         def result
-          lines.sum { |l| next_diff l.split.map(&:to_i) }
+          lines.sum { next_diff it.split.map(&:to_i) }
         end
 
         def next_diff(value_list)

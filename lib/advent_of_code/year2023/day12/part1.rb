@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/12
       class Part1 < AdventOfCode::Part
         def result
-          lines.sum { |l| Line.new(l).possibilities }
+          lines.sum { Line.new(it).possibilities }
         end
       end
     end

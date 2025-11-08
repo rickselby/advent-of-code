@@ -8,7 +8,7 @@ module AdventOfCode
         REGEX = /mul\((\d+),(\d+)\)/
 
         def result
-          muls.sum { |m| m.map(&:to_i).reduce(:*) }
+          muls.sum { it.map(&:to_i).reduce(:*) }
         end
 
         private

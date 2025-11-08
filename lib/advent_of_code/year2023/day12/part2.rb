@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/12
       class Part2 < Part1
         def result
-          lines.sum { |l| Line.new(unfold(l)).possibilities }
+          lines.sum { Line.new(unfold(it)).possibilities }
         end
 
         private

@@ -25,7 +25,7 @@ module AdventOfCode
           walked_map = deep_dup map
           walk walked_map, start, :up
 
-          walked_map.transform_values { |v| v.select { |_, w| w == "X" } }
+          walked_map.transform_values { it.select { |_, w| w == "X" } }
                     .to_h { |k, v| [k, v.map { |l, _| [k, l] }] }
                     .values
                     .flatten(1)

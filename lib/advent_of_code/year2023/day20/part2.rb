@@ -7,8 +7,8 @@ module AdventOfCode
       class Part2 < AdventOfCode::Part
         def result
           modules = Modules.new(lines)
-          inputs = modules.modules.values.find { |m| m.targets.include? :rx }.inputs
-          inputs.map { |i| modules.press_button_until_target_outputs_high i }
+          inputs = modules.modules.values.find { it.targets.include? :rx }.inputs
+          inputs.map { modules.press_button_until_target_outputs_high it }
                 .reduce(1, :lcm)
         end
       end

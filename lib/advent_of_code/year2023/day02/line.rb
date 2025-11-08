@@ -21,7 +21,7 @@ module AdventOfCode
         end
 
         def valid?
-          MAX.keys.all? { |k| @colours[k] <= MAX[k] }
+          MAX.keys.all? { @colours[it] <= MAX[it] }
         end
 
         def power
@@ -31,15 +31,15 @@ module AdventOfCode
         private
 
         def init_colours
-          @colours = MAX.keys.to_h { |k| [k, 0] }
+          @colours = MAX.keys.to_h { [it, 0] }
         end
 
         def parse_game(game)
-          game.split(";").each { |set| parse_set set }
+          game.split(";").each { parse_set it }
         end
 
         def parse_set(set)
-          set.split(",").each { |cubes| parse_cubes cubes }
+          set.split(",").each { parse_cubes it }
         end
 
         def parse_cubes(cubes)

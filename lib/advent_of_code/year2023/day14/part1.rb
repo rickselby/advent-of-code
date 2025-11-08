@@ -6,13 +6,13 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/14
       class Part1 < AdventOfCode::Part
         def result
-          transpose(lines).then { |lines| lines.sum { |l| Line.new(l).count_slides } }
+          transpose(lines).then { it.sum { Line.new(it).count_slides } }
         end
 
         private
 
         def lines
-          @lines ||= super.map { |l| l.strip.chars }
+          @lines ||= super.map { it.strip.chars }
         end
 
         def transpose(map)

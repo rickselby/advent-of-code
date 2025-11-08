@@ -28,7 +28,7 @@ module AdventOfCode
           return match g_idx, g_len if s_idx == @springs.size
 
           # Get the result for this position (and cache it!)
-          result(s_idx, g_idx, g_len).tap { |r| @state_cache[cache_key] = r }
+          result(s_idx, g_idx, g_len).tap { @state_cache[cache_key] = it }
         end
 
         def match(g_idx, g_len)

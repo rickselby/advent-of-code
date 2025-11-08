@@ -21,11 +21,11 @@ module AdventOfCode
 
         # Set up hash with one of each card
         def init_counts
-          (1..lines.size).each { |n| @cards[n] = 1 }
+          (1..lines.size).each { @cards[it] = 1 }
         end
 
         def count_cards
-          lines.map { |l| Card.new l }.each do |card|
+          lines.map { Card.new it }.each do |card|
             next unless card.winner?
 
             # if card 10 were to have 5 matching numbers, you would win one copy each of cards 11, 12, 13, 14, and 15

@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2024/day/2
       class Part1 < AdventOfCode::Part
         def result
-          reports.count { |r| safe? r }
+          reports.count { safe? it }
         end
 
         private
@@ -17,7 +17,7 @@ module AdventOfCode
         end
 
         def reports
-          lines.map { |l| l.split.map(&:to_i) }
+          lines.map { it.split.map(&:to_i) }
         end
       end
     end

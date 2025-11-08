@@ -36,7 +36,7 @@ module AdventOfCode
             c = @check.shift
             cost = @costs[c]
 
-            c.adjacent.each { |neighbor| check_next_coord neighbor, cost + 1 }
+            c.adjacent.each { check_next_coord it, cost + 1 }
 
             break if @check.empty?
             break if @costs.key? @target

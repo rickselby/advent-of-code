@@ -18,7 +18,7 @@ module AdventOfCode
 
         def reset
           @status ||= {}
-          @status.each_key { |k| @status[k] = :low }
+          @status.each_key { @status[it] = :low }
         end
       end
     end

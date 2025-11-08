@@ -52,7 +52,7 @@ module AdventOfCode
         end
 
         def antennas
-          @antennas ||= input_array.flatten.uniq.reject { |c| c == "." }
+          @antennas ||= input_array.flatten.uniq.reject { it == "." }
         end
 
         def max_x

@@ -23,7 +23,7 @@ module AdventOfCode
         private
 
         def stones
-          super.to_h { |v| [v, 1] }
+          super.to_h { [it, 1] }
         end
       end
     end

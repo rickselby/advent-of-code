@@ -8,11 +8,11 @@ module AdventOfCode
         private
 
         def move(instructions)
-          instructions.join.chars.each { |instruction| try_move? [start], instruction }
+          instructions.join.chars.each { try_move? [start], it }
         end
 
         def build_map(map)
-          super.map { |line| line.map { |char| widen_map(char) }.flatten }
+          super.map { it.map { widen_map(it) }.flatten }
         end
 
         def widen_map(char)
@@ -24,7 +24,7 @@ module AdventOfCode
         end
 
         def try_move?(coords, instruction, nested: false)
-          targets = coords.map { |c| next_coords c, instruction }
+          targets = coords.map { next_coords it, instruction }
 
           return false if cannot_move targets
 
@@ -32,7 +32,7 @@ module AdventOfCode
           targets = add_more_targets targets, instruction
 
           # some columns might be ok to move, some might now...
-          need_to_check = targets.reject { |t| can_move? t }
+          need_to_check = targets.reject { can_move? it }
 
           return false unless need_to_check.empty? || try_move?(need_to_check, instruction, nested: true)
 
@@ -42,7 +42,7 @@ module AdventOfCode
         end
 
         def cannot_move(targets)
-          targets.any? { |t| @map[t[1]][t[0]] == "#" }
+          targets.any? { @map[it[1]][it[0]] == "#" }
         end
 
         def can_move?(target)
@@ -63,12 +63,12 @@ module AdventOfCode
         end
 
         def do_updates(coords, targets, instruction, nested)
-          coords.each { |c| update_map c, next_coords(c, instruction), !nested }
+          coords.each { update_map it, next_coords(it, instruction), !nested }
 
           # clear any columns that have finished moving
           return unless coords.length != targets.length
 
-          (targets - coords.map { |c| next_coords c, instruction }).each { |c| @map[c[1]][c[0]] = "." }
+          (targets - coords.map { next_coords it, instruction }).each { @map[it[1]][it[0]] = "." }
         end
 
         def possible_move?(coords)

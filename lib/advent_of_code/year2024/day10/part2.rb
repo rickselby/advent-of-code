@@ -15,7 +15,7 @@ module AdventOfCode
           v = val(start)
           return 9 if v == 9
 
-          moves(start).flat_map { |move| (val(move) == (v + 1)) ? finishes(move) : nil }
+          moves(start).flat_map { (val(it) == (v + 1)) ? finishes(it) : nil }
         end
       end
     end

@@ -31,7 +31,7 @@ module AdventOfCode
         protected
 
         def send_pulse(pulse)
-          @targets.each { |target_name| @modules.pulse @name, target_name, pulse }
+          @targets.each { @modules.pulse @name, it, pulse }
         end
       end
     end

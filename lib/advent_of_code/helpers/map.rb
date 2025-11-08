@@ -44,7 +44,7 @@ module AdventOfCode
       end
 
       def diagonals
-        padding = [*0..(height - 1)].map { |i| nil_array * i }
+        padding = [*0..(height - 1)].map { nil_array * it }
         padded = padding.reverse.zip(@map).zip(padding).map(&:flatten)
         padded.transpose.map(&:compact)
       end
@@ -75,7 +75,7 @@ module AdventOfCode
       end
 
       def count(value)
-        map.sum { |row| row.select { |c| c == value }.length }
+        map.sum { it.select { it == value }.length }
       end
 
       def each_coord
@@ -87,7 +87,7 @@ module AdventOfCode
       end
 
       def print
-        map.each { |row| puts row.join }
+        map.each { puts it.join }
       end
 
       private

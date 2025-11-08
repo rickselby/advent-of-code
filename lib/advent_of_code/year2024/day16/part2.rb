@@ -7,8 +7,8 @@ module AdventOfCode
       class Part2 < Part1
         def result
           load_finishes
-          min_cost = ends.filter_map { |e| @costs[e] }.min
-          @finishes.select { |f| f.score == min_cost }
+          min_cost = ends.filter_map { @costs[it] }.min
+          @finishes.select { it.score == min_cost }
                    .flat_map(&:coords)
                    .map(&:coordinates)
                    .uniq

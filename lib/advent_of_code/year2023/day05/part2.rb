@@ -9,7 +9,7 @@ module AdventOfCode
           ranges = seed_ranges
           # Translate each range (splitting ranges where appropriate)
           MAPS.each do |map|
-            ranges = ranges.flat_map { |r| translate_range map, r }
+            ranges = ranges.flat_map { translate_range map, it }
           end
           ranges.map(&:begin).min
         end

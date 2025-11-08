@@ -10,7 +10,7 @@ module AdventOfCode
           @cuts = []
           set_route
           find_cuts
-          @cuts.count { |v| v >= @min_save }
+          @cuts.count { it >= @min_save }
         end
 
         private
@@ -44,7 +44,7 @@ module AdventOfCode
             list = @visited.dup
             (1..20).each do |i|
               next_list = Set.new
-              list.each { |c| next_list += check_coords c, i }
+              list.each { next_list += check_coords it, i }
               list = next_list
             end
           end

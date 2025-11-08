@@ -12,8 +12,8 @@ module AdventOfCode
         end
 
         def result
-          lines.each { |l| parse l }
-          @map.sum { |l| l.count { |c| c } }
+          lines.each { parse it }
+          @map.sum { it.count { it } }
         end
 
         private

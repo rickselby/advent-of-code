@@ -8,7 +8,7 @@ module AdventOfCode
         SECONDS = 6398
 
         def result
-          print_output(lines.to_set { |l| final_pos l })
+          print_output(lines.to_set { final_pos it })
           nil
         end
 

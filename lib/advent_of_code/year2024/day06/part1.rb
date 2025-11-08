@@ -77,7 +77,7 @@ module AdventOfCode
         end
 
         def count(map)
-          map.values.sum { |r| r.values.select { |c| c == "X" }.size }
+          map.values.sum { it.values.select { it == "X" }.size }
         end
       end
     end
