@@ -30,6 +30,7 @@
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.7, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.16.0, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.5, RVM: ruby-3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="lefthook (v2.0.2, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="lint_roller (v1.1.0, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="logger (v1.7.0, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.24.1, RVM: ruby-3.4.7) [gem]" level="application" />
@@ -53,14 +54,14 @@
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.13.6, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.13.6, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.81.7, RVM: ruby-3.4.7) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.47.1, RVM: ruby-3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.48.0, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-capybara (v2.22.1, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-factory_bot (v2.27.1, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-performance (v1.26.1, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails (v2.33.4, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails-accessibility (v1.0.1, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rake (v0.7.1, RVM: ruby-3.4.7) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubocop-rickselby (v0.64.0, RVM: ruby-3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-rickselby (v0.64.1, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v3.7.0, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec_rails (v2.31.0, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-sequel (v0.4.1, RVM: ruby-3.4.7) [gem]" level="application" />
