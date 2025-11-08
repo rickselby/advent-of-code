@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2024/day/7
       class Part1 < AdventOfCode::Part
         def result
-          lines.sum { |l| test l }
+          lines.sum { test it }
         end
 
         private

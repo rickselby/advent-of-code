@@ -9,7 +9,7 @@ module AdventOfCode
 
         def calc(line)
           dimensions = line.split("x").map(&:to_i)
-          dimensions.min(2).sum { |d| d * 2 } + dimensions.reduce(:*)
+          dimensions.min(2).sum { it * 2 } + dimensions.reduce(:*)
         end
       end
     end

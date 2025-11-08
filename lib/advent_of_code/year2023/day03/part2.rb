@@ -9,7 +9,7 @@ module AdventOfCode
           # A list of asterisk coordinates and any numbers that are adjacent
           @possible_gear_counts = {}
           look_for_gears
-          actual_gears.values.sum { |numbers| numbers.reduce(:*) }
+          actual_gears.values.sum { it.reduce(:*) }
         end
 
         private
@@ -60,7 +60,7 @@ module AdventOfCode
             end
           end
 
-          possible_gears.intersection(coords).each { |coordinates| add_number coordinates, number }
+          possible_gears.intersection(coords).each { add_number it, number }
         end
 
         # Mark that a number is adjacent to an asterisk

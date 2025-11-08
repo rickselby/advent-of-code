@@ -7,7 +7,7 @@ module AdventOfCode
       class Part2 < Part1
         def result
           @hashmap = {}
-          steps.each { |s| step s }
+          steps.each { step it }
           @hashmap.sum { |box_index, box| sum box, box_index }
         end
 

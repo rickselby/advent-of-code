@@ -26,7 +26,7 @@ module AdventOfCode
           values = seeds
           # Step through each map and update each value
           MAPS.each do |map|
-            values = values.map { |v| translate_value map, v }
+            values = values.map { translate_value map, it }
           end
           values.min
         end

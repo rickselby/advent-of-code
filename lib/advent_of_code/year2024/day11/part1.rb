@@ -15,7 +15,7 @@ module AdventOfCode
         end
 
         def blink(stones)
-          stones.flat_map { |s| change s }
+          stones.flat_map { change it }
         end
 
         private
@@ -24,7 +24,7 @@ module AdventOfCode
           return 1 if stone.zero?
 
           str = stone.to_s
-          return str.chars.each_slice(str.length / 2).map { |a| a.join.to_i } if str.length.even?
+          return str.chars.each_slice(str.length / 2).map { it.join.to_i } if str.length.even?
 
           stone * 2024
         end

@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/4
       class Part1 < AdventOfCode::Part
         def result
-          lines.map { |l| Card.new l }.sum(&:points)
+          lines.map { Card.new it }.sum(&:points)
         end
       end
     end

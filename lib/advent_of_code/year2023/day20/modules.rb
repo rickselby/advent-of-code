@@ -46,7 +46,7 @@ module AdventOfCode
         def create_modules(lines)
           lines.map(&:strip).each do |line|
             name, targets = line.split " -> "
-            targets = targets.split(",").map { |t| t.strip.to_sym }
+            targets = targets.split(",").map { it.strip.to_sym }
             create_module name, targets
           end
           set_inputs

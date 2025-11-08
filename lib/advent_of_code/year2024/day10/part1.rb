@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2024/day/10
       class Part1 < AdventOfCode::Part
         def result
-          starts.sum { |s| score(s) }
+          starts.sum { score(it) }
         end
 
         private
@@ -29,7 +29,7 @@ module AdventOfCode
           v = val(start)
           return start if v == 9
 
-          moves(start).flat_map { |move| (val(move) == (v + 1)) ? finishes(move) : nil }
+          moves(start).flat_map { (val(it) == (v + 1)) ? finishes(it) : nil }
         end
 
         def moves(coord)

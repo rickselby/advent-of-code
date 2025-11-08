@@ -6,9 +6,9 @@ module AdventOfCode
       # https://adventofcode.com/2024/day/5
       class Part2 < Part1
         def result
-          updates.reject { |u| update_valid? u }
-                 .map { |u| fix u }
-                 .sum { |u| middle_value u }
+          updates.reject { update_valid? it }
+                 .map { fix it }
+                 .sum { middle_value it }
         end
 
         private

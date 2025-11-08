@@ -11,7 +11,7 @@ module AdventOfCode
         end
 
         def result
-          @input.map { |r| ways_to_beat r }.reduce(:*)
+          @input.map { ways_to_beat it }.reduce(:*)
         end
 
         private
@@ -29,7 +29,7 @@ module AdventOfCode
         end
 
         def ways_to_beat(race)
-          (0..race[:time]).count { |time_held| beats?(time_held, race) }
+          (0..race[:time]).count { beats?(it, race) }
         end
 
         def beats?(time_held, race)

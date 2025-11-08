@@ -45,7 +45,7 @@ module AdventOfCode
         end
 
         def count_possibilities(parts)
-          parts.sum { |p| p.values.map(&:size).reduce(:*) }
+          parts.sum { it.values.map(&:size).reduce(:*) }
         end
 
         def new_part(part, key, range)

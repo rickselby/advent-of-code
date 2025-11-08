@@ -10,7 +10,7 @@ module AdventOfCode
           @costs = { start => 0 }
           @check = [start]
           do_checks
-          ends.filter_map { |e| @costs[e] }.min
+          ends.filter_map { @costs[it] }.min
         end
 
         private
@@ -43,7 +43,7 @@ module AdventOfCode
 
         def ends
           e = @map.find "E"
-          %i[north east south west].map { |d| CoordinatesWithDirection.new e.x, e.y, d }
+          %i[north east south west].map { CoordinatesWithDirection.new e.x, e.y, it }
         end
 
         # Add a direction to coordinates

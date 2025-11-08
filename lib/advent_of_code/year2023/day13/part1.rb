@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/13
       class Part1 < AdventOfCode::Part
         def result
-          split_maps.sum { |m| Map.new(m).value }
+          split_maps.sum { Map.new(it).value }
         end
 
         private

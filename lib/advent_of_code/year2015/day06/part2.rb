@@ -6,8 +6,8 @@ module AdventOfCode
       # https://adventofcode.com/2015/day/6
       class Part2 < Part1
         def result
-          lines.each { |l| parse l }
-          @map.sum { |l| l.compact.sum }
+          lines.each { parse it }
+          @map.sum { it.compact.sum }
         end
 
         private

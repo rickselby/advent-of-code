@@ -19,7 +19,7 @@ module AdventOfCode
           get_empty_cols rows
 
           get_galaxies(rows)
-            .then { |galaxies| get_distances galaxies }
+            .then { get_distances it }
             .sum
         end
 
@@ -33,14 +33,14 @@ module AdventOfCode
 
         def get_empty_cols(rows)
           rows.first.size.times do |col_index|
-            @empty_cols << col_index if rows.map { |r| r[col_index] }.all?(".")
+            @empty_cols << col_index if rows.map { it[col_index] }.all?(".")
           end
         end
 
         def get_galaxies(rows)
           rows.each_with_index.with_object([]) do |(row, row_index), galaxies|
-            (0...row.length).select { |i| row[i] == "#" }
-                            .each { |col_index| galaxies << [row_index, col_index] }
+            (0...row.length).select { row[it] == "#" }
+                            .each { galaxies << [row_index, it] }
           end
         end
 

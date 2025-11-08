@@ -17,7 +17,7 @@ module AdventOfCode
 
         def parse_input
           lines.map(&:strip).each do |line|
-            from, to = line.split("~").map { |l| l.split(",").map(&:to_i) }
+            from, to = line.split("~").map { it.split(",").map(&:to_i) }
             @blocks << fill_in_blocks([from, to])
           end
         end
@@ -29,7 +29,7 @@ module AdventOfCode
           return blocks if from == to
 
           diff = from.zip(to).map { |f, t| t - f }
-          axis = diff.index { |e| !e.zero? }
+          axis = diff.index { !it.zero? }
           change = diff[axis].negative? ? -1 : 1
 
           add_blocks blocks, from, to, axis, change
@@ -47,7 +47,7 @@ module AdventOfCode
         end
 
         def settle_all
-          @blocks = @blocks.sort_by { |block| block.map { |c| c[2] }.min }
+          @blocks = @blocks.sort_by { it.map { it[2] }.min }
           loop do
             changes = false
             @blocks.each_with_index do |b, i|
@@ -59,9 +59,9 @@ module AdventOfCode
         end
 
         def settle_changes?(block, index)
-          block.each { |coords| @cubes.delete coords }
+          block.each { @cubes.delete it }
           block = drop_block block
-          block.each { |coords| @cubes << coords }
+          block.each { @cubes << it }
 
           return false if @blocks[index] == block
 
@@ -71,7 +71,7 @@ module AdventOfCode
 
         def drop_block(block)
           loop do
-            break if block.any? { |c| c[2] == 1 }
+            break if block.any? { it[2] == 1 }
 
             new_block = shift_block_down block
             break if clash? new_block
@@ -83,12 +83,12 @@ module AdventOfCode
         end
 
         def clash?(block)
-          block.any? { |c| @cubes.include? c }
+          block.any? { @cubes.include? it }
         end
 
         def try_disintegrate
           @blocks.count do |block|
-            without_coords(block) { no_movement?(@blocks.reject { |b| b == block }) }
+            without_coords(block) { no_movement?(@blocks.reject { it == block }) }
           end
         end
 
@@ -99,19 +99,19 @@ module AdventOfCode
         end
 
         def can_block_move?(block)
-          return false if block.any? { |c| c[2] == 1 }
+          return false if block.any? { it[2] == 1 }
 
           !clash?(shift_block_down(block))
         end
 
         def shift_block_down(block)
-          block.dup.map { |coords| [coords[0], coords[1], coords[2] - 1] }
+          block.dup.map { [it[0], it[1], it[2] - 1] }
         end
 
         def without_coords(block)
-          block.each { |coords| @cubes.delete coords }
+          block.each { @cubes.delete it }
           result = yield
-          block.each { |coords| @cubes << coords }
+          block.each { @cubes << it }
           result
         end
       end

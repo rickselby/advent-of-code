@@ -21,12 +21,12 @@ module AdventOfCode
 
         def rows
           max_y = input_array.size - 1
-          Array.new(input_array[0].size) { |x| [[x, 0, :south], [x, max_y, :north]] }.flatten(1)
+          Array.new(input_array[0].size) { [[it, 0, :south], [it, max_y, :north]] }.flatten(1)
         end
 
         def cols
           max_x = input_array[0].size - 1
-          Array.new(input_array.size) { |y| [[0, y, :east], [max_x, y, :west]] }.flatten(1)
+          Array.new(input_array.size) { [[0, it, :east], [max_x, it, :west]] }.flatten(1)
         end
       end
     end

@@ -42,7 +42,7 @@ module AdventOfCode
           return if region.coords.include?(coords) || val(coords) != region.tag
 
           region.coords << coords
-          adjacent_coords(coords).each { |c| build_region region, c }
+          adjacent_coords(coords).each { build_region region, it }
         end
 
         def adjacent_coords(coords)

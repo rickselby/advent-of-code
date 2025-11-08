@@ -10,7 +10,7 @@ module AdventOfCode
         MATCH = "XMAS"
 
         def result
-          all_lines.sum { |l| l.scan(MATCH).size }
+          all_lines.sum { it.scan(MATCH).size }
         end
 
         private
@@ -42,9 +42,9 @@ module AdventOfCode
 
         def diagonals(arr)
           nil_array = [nil]
-          padding = [*0..(arr.length - 1)].map { |i| nil_array * i }
+          padding = [*0..(arr.length - 1)].map { nil_array * it }
           padded = padding.reverse.zip(arr).zip(padding).map(&:flatten)
-          padded.transpose.map { |x| x.compact.join }
+          padded.transpose.map { it.compact.join }
         end
       end
     end

@@ -9,7 +9,7 @@ module AdventOfCode
           @ruleset = {}
           @parts = []
           parse_input
-          sum_accepted_parts(@parts.select { |p| accept_part? p })
+          sum_accepted_parts(@parts.select { accept_part? it })
         end
 
         private
@@ -31,7 +31,7 @@ module AdventOfCode
         def add_ruleset(line)
           matches = line.match(/(.+){(.*)}/)
           name, rules = matches[1..2]
-          @ruleset[name.to_sym] = rules.split(",").map { |r| parse_rule r }
+          @ruleset[name.to_sym] = rules.split(",").map { parse_rule it }
         end
 
         def add_part(line)
@@ -83,7 +83,7 @@ module AdventOfCode
         end
 
         def sum_accepted_parts(parts)
-          parts.sum { |p| p.values.sum }
+          parts.sum { it.values.sum }
         end
       end
     end

@@ -6,8 +6,8 @@ module AdventOfCode
       # https://adventofcode.com/2024/day/5
       class Part1 < AdventOfCode::Part
         def result
-          updates.select { |u| update_valid? u }
-                 .sum { |u| middle_value u }
+          updates.select { update_valid? it }
+                 .sum { middle_value it }
         end
 
         private
@@ -37,9 +37,9 @@ module AdventOfCode
         end
 
         def get_lines(separator:)
-          lines.partition { |l| l.include? separator }
+          lines.partition { it.include? separator }
                .first
-               .map { |v| v.split(separator).map(&:to_i) }
+               .map { it.split(separator).map(&:to_i) }
         end
       end
     end

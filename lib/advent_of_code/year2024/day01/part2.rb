@@ -12,7 +12,7 @@ module AdventOfCode
         private
 
         def similarity
-          first_line.map { |v| (v * second_line.count(v)) }
+          first_line.map { it * second_line.count(it) }
         end
       end
     end

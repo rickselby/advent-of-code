@@ -16,8 +16,8 @@ module AdventOfCode
 
         def tidy_line
           line = single_line
-          single_line.scan(DO_DONT_REGEX).each { |d| line.gsub!(d[0], "") }
-          line.scan(DONT_AT_END).each { |d| line.gsub!(d[0], "") }
+          single_line.scan(DO_DONT_REGEX).each { line.gsub!(it[0], "") }
+          line.scan(DONT_AT_END).each { line.gsub!(it[0], "") }
           line
         end
       end

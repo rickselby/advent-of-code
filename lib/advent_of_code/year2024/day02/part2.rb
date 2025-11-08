@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2024/day/2
       class Part2 < Part1
         def result
-          reports.count { |r| safe_with_damping? r }
+          reports.count { safe_with_damping? it }
         end
 
         private

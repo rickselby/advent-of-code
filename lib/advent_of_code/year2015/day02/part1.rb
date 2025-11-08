@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2015/day/2
       class Part1 < AdventOfCode::Part
         def result
-          lines.sum { |line| calc line }
+          lines.sum { calc it }
         end
 
         private
@@ -14,7 +14,7 @@ module AdventOfCode
         def calc(line)
           l, w, h = line.split("x").map(&:to_i)
           sides = [l * w, w * h, h * l]
-          sides.sum { |s| s * 2 } + sides.min
+          sides.sum { it * 2 } + sides.min
         end
       end
     end

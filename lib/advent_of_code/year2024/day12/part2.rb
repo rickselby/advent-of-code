@@ -56,7 +56,7 @@ module AdventOfCode
           end
 
           def sum_sides(sides)
-            sides.values.sum { |s| s.values.sum { |h| h.sort.slice_when { |a, b| a != b - 1 }.to_a.size } }
+            sides.values.sum { it.values.sum { it.sort.slice_when { |a, b| a != b - 1 }.to_a.size } }
           end
 
           def adjacent_coords(coords)

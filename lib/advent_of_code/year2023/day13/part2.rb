@@ -6,7 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2023/day/13
       class Part2 < Part1
         def result
-          split_maps.sum { |m| Map.new(m).smudged_value }
+          split_maps.sum { Map.new(it).smudged_value }
         end
       end
     end
