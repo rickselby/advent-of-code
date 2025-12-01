@@ -9,8 +9,7 @@ module AdventOfCode
           @dial = 50
           count = 0
           lines.each do |line|
-            parts = /([LR])(\d+)/.match line
-            rotate parts[1], parts[2].to_i
+            rotate(*/([LR])(\d+)/.match(line).captures)
             count += 1 if @dial.zero?
           end
           count
@@ -20,8 +19,8 @@ module AdventOfCode
 
         def rotate(direction, amount)
           case direction
-          when "L" then @dial -= amount
-          when "R" then @dial += amount
+          when "L" then @dial -= amount.to_i
+          when "R" then @dial += amount.to_i
           end
           @dial %= 100
         end
