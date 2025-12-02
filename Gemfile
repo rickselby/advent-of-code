@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem "benchmark", "~> 0.5.0"
 gem "bundler-audit", "~> 0.9"
 gem "lefthook", "~> 2.0"
 gem "matrix", "~> 0.4.3"

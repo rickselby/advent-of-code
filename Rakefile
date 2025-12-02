@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "benchmark"
 require "bundler/audit/task"
 require "fileutils"
 require "json"
@@ -33,7 +34,7 @@ task :run, [:year, :day, :part] do |_, args|
   end
 
   day = AdventOfCode.get(year, day, part).new(input)
-  puts day.result
+  puts(Benchmark.measure { puts day.result })
 end
 
 desc "Create templates for a new solution"

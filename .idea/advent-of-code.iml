@@ -15,6 +15,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v8.1.1, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.3, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="base64 (v0.3.0, RVM: ruby-3.4.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="benchmark (v0.5.0, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="better_html (v2.2.0, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bigdecimal (v3.3.1, RVM: ruby-3.4.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.3.0, RVM: ruby-3.4.7) [gem]" level="application" />
