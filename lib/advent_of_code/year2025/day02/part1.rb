@@ -26,9 +26,7 @@ module AdventOfCode
           str = num.to_s
           return false unless str.length.even?
 
-          first, second = str.chars.each_slice(str.length / 2).map(&:join)
-
-          first == second
+          str[0, str.length / 2] == str[str.length / 2, str.length]
         end
       end
     end
