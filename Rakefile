@@ -48,18 +48,21 @@ task :create, [:year, :day, :part] do |_, args|
   FileUtils.mkdir_p data_dir
   data_file = "#{data_dir}/#{day}.txt"
   FileUtils.touch data_file
+  puts "created #{data_file}"
 
   # Create a class for the part
   class_dir = "lib/advent_of_code/year#{year}/day#{day}"
   FileUtils.mkdir_p class_dir
   class_file = "#{class_dir}/part#{part}.rb"
   File.write class_file, format(CLASS_TEMPLATE, year:, day:, part:, url_day: args[:day])
+  puts "created #{class_file}"
 
   # Create a spec file for the part
   spec_dir = "spec/advent_of_code/year#{year}/day#{day}"
   FileUtils.mkdir_p spec_dir
   spec_file = "#{spec_dir}/part#{part}_spec.rb"
   File.write spec_file, format(SPEC_TEMPLATE, year:, day:, part:)
+  puts "created #{spec_file}"
 
   # Add the files to git
   `git add #{class_file} #{spec_file}`
