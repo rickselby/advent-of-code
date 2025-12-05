@@ -78,10 +78,21 @@ module AdventOfCode
         map.sum { it.select { it == value }.length }
       end
 
+      # TODO: replace with all_coords
       def each_coord
         @map.each_with_index do |row, y|
           row.each_with_index do |_, x|
             yield Coordinates.new(x, y)
+          end
+        end
+      end
+
+      def all_coords
+        Enumerator.new do |yielder|
+          @map.each_with_index do |row, y|
+            row.each_with_index do |_, x|
+              yielder << Coordinates.new(x, y)
+            end
           end
         end
       end

@@ -31,6 +31,10 @@ module AdventOfCode
         %i[north east south west].map { dup.move it }
       end
 
+      def adjacent_plus_diagonals
+        %i[north north_east east south_east south south_west west north_west].map { dup.move it }
+      end
+
       def ==(other)
         coordinates == other.coordinates
       end
