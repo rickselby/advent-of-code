@@ -16,7 +16,7 @@ module AdventOfCode
         private
 
         def find_cuts
-          @map.each_coord do |c|
+          @map.all_coords.each do |c|
             next unless @map[c].is_a? Integer
 
             @cuts += CutsFrom.new(@map, c).cuts

@@ -13,7 +13,7 @@ module AdventOfCode
       def [](coords)
         return nil if out_of_range? coords
 
-        @map.dig(coords.y, coords.x)
+        @map.dig coords.y, coords.x
       end
 
       def set(coords, value)
@@ -29,18 +29,19 @@ module AdventOfCode
       end
 
       def transpose
+        self.class.new @map.transpose
+      end
+
+      def transpose!
         @map = @map.transpose
       end
 
       def rotate(direction = :ccw)
-        case direction
-        when :ccw
-          @map.map!(&:reverse)
-          transpose
-        when :cw
-          transpose
-          @map.map!(&:reverse)
-        end
+        self.class.new do_rotate direction
+      end
+
+      def rotate!(direction = :ccw)
+        @map = do_rotate direction
       end
 
       def diagonals
@@ -71,20 +72,11 @@ module AdventOfCode
       end
 
       def cols
-        transpose
+        @map.transpose
       end
 
       def count(value)
-        map.sum { it.select { it == value }.length }
-      end
-
-      # TODO: replace with all_coords
-      def each_coord
-        @map.each_with_index do |row, y|
-          row.each_with_index do |_, x|
-            yield Coordinates.new(x, y)
-          end
-        end
+        @map.sum { it.count { it == value } }
       end
 
       def all_coords
@@ -98,13 +90,22 @@ module AdventOfCode
       end
 
       def print
-        map.each { puts it.join }
+        @map.each { puts it.join }
       end
 
       private
 
       def nil_array
         @nil_array ||= [nil]
+      end
+
+      def do_rotate(direction)
+        case direction
+        when :ccw
+          @map.map(&:reverse).transpose
+        when :cw
+          @map.transpose.map(&:reverse)
+        end
       end
     end
   end

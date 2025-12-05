@@ -38,7 +38,7 @@ module AdventOfCode
         end
 
         def find_cuts
-          @map.each_coord do |coord|
+          @map.all_coords.each do |coord|
             values = coord.adjacent.filter_map { @map[it] }.reject { it == "#" }
             next if values.size < 2
 

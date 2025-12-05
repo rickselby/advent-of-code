@@ -34,7 +34,7 @@ describe AdventOfCode::Helpers::Map do
     example { expect(klass.height).to eq 5 }
   end
 
-  describe "#transpose" do
+  describe "transposing" do
     let(:transposed_map) do
       [
         [1, 5, 9, 13, 17],
@@ -44,14 +44,22 @@ describe AdventOfCode::Helpers::Map do
       ]
     end
 
-    it "transposes the map in place" do
-      klass.transpose
-      expect(klass.map).to eq transposed_map
+    describe "#transpose" do
+      it "returns a transposed map" do
+        expect(klass.transpose.map).to eq transposed_map
+      end
+    end
+
+    describe "#transpose!" do
+      it "transposes the map" do
+        klass.transpose!
+        expect(klass.map).to eq transposed_map
+      end
     end
   end
 
-  describe "#rotate" do
-    context "when counter clockwise" do
+  describe "rotating" do
+    describe "counter clockwise" do
       let(:rotated_map) do
         [
           [4, 8, 12, 16, 20],
@@ -61,13 +69,17 @@ describe AdventOfCode::Helpers::Map do
         ]
       end
 
-      it "transposes the map in place" do
-        klass.rotate
+      example "#rotate returns a rotated map" do
+        expect(klass.rotate(:ccw).map).to eq rotated_map
+      end
+
+      example "#rotate! rotates the map in place" do
+        klass.rotate! :ccw
         expect(klass.map).to eq rotated_map
       end
     end
 
-    context "when clockwise" do
+    describe "clockwise" do
       let(:rotated_map) do
         [
           [17, 13, 9, 5, 1],
@@ -77,8 +89,12 @@ describe AdventOfCode::Helpers::Map do
         ]
       end
 
-      it "transposes the map in place" do
-        klass.rotate(:cw)
+      example "#rotate returns a rotated map" do
+        expect(klass.rotate(:cw).map).to eq rotated_map
+      end
+
+      example "#rotate! rotates the map in place" do
+        klass.rotate! :cw
         expect(klass.map).to eq rotated_map
       end
     end
