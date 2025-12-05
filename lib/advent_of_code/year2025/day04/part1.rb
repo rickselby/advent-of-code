@@ -7,7 +7,6 @@ module AdventOfCode
       class Part1 < AdventOfCode::Part
         def result
           @map = AdventOfCode::Helpers::Map.new(input_array)
-
           @map.all_coords.count { accessible? it }
         end
 
