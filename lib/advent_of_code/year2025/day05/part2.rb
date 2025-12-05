@@ -22,23 +22,23 @@ module AdventOfCode
           loop do
             break if @ranges.empty?
 
-            range = @ranges.pop
+            @fixed_ranges << grow_range(@ranges.pop)
+          end
+        end
 
-            loop do
-              to_delete = []
-              @ranges.each do |r|
-                next unless range.overlap? r
+        def grow_range(range)
+          loop do
+            to_delete = []
+            @ranges.each do |r|
+              next unless range.overlap? r
 
-                to_delete << r
-                range = ([r.begin, range.begin].min)..([r.end, range.end].max)
-              end
-
-              break if to_delete.empty?
-
-              to_delete.each { @ranges.delete it }
+              to_delete << r
+              range = ([r.begin, range.begin].min)..([r.end, range.end].max)
             end
 
-            @fixed_ranges << range
+            return range if to_delete.empty?
+
+            to_delete.each { @ranges.delete it }
           end
         end
       end
