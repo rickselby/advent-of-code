@@ -6,6 +6,7 @@ module AdventOfCode
       # https://adventofcode.com/2025/day/6
       class Part1 < AdventOfCode::Part
         def result
+          @cols = []
           parse_input
           do_sums
         end
@@ -13,7 +14,6 @@ module AdventOfCode
         private
 
         def parse_input
-          @cols = []
           lines.each do |line|
             line.split.each_with_index do |v, i|
               @cols[i] ||= []
