@@ -6,10 +6,10 @@ describe AdventOfCode::Year2025::Day06::Part2 do
 
     let(:data) do
       <<~DATA
-        123 328  51 64 
-         45 64  387 23 
+        123 328  51 64
+         45 64  387 23
           6 98  215 314
-        *   +   *   +  
+        *   +   *   +
       DATA
     end
 

@@ -23,7 +23,11 @@ module AdventOfCode
         end
 
         def input_array
-          @input.lines.map { it.chop.chars }
+          # chop the last character off each line - this is a newline character
+          array = @input.lines.map { it.chop.chars }
+          # fill lines with whitespace where trailing whitespace may have been removed
+          max_size = array.map(&:size).max
+          array.map { it.fill " ", it.size, max_size - it.size }
         end
       end
     end
