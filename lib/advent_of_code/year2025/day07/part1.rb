@@ -21,15 +21,11 @@ module AdventOfCode
         end
 
         def process_line(line, tachyons)
-          new_tachyons = []
-          tachyons.each do |t|
-            if line[t] == "^"
-              @splits += 1
-              new_tachyons << (t + 1)
-              new_tachyons << (t - 1)
-            else
-              new_tachyons << t
-            end
+          new_tachyons = tachyons.flat_map do |t|
+            return t unless line[t] == "^"
+
+            @splits += 1
+            [t + 1, t - 1]
           end
 
           new_tachyons.uniq.sort
