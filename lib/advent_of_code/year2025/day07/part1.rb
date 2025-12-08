@@ -22,7 +22,7 @@ module AdventOfCode
 
         def process_line(line, tachyons)
           new_tachyons = tachyons.flat_map do |t|
-            return t unless line[t] == "^"
+            next t unless line[t] == "^"
 
             @splits += 1
             [t + 1, t - 1]
