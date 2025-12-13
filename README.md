@@ -20,7 +20,7 @@ Runs the code against the input (`data/[year]/[day].txt`) and returns the result
 
 ### 2025
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br/>
-⭐⭐⭐
+⭐⭐⭐⭐
 
 ### 2024
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐<br />
