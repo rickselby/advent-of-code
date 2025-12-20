@@ -8,5 +8,5 @@ gem "lefthook", "~> 2.0"
 gem "matrix", "~> 0.4.3"
 gem "rake", "~> 13.3"
 gem "rspec", "~> 3.13"
-gem "rubocop-rickselby", "~> 0.65", require: false
+gem "rubocop-rickselby", "~> 0.66", require: false
 gem "zeitwerk", "~> 2.7"
