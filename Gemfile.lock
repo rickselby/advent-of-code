@@ -52,7 +52,7 @@ GEM
       concurrent-ruby (~> 1.0)
     json (2.18.0)
     language_server-protocol (3.17.0.5)
-    lefthook (2.0.16)
+    lefthook (2.1.0)
     lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.25.0)
@@ -170,7 +170,7 @@ PLATFORMS
 DEPENDENCIES
   benchmark (~> 0.5.0)
   bundler-audit (~> 0.9)
-  lefthook (~> 2.0)
+  lefthook (~> 2.1)
   matrix (~> 0.4.3)
   rake (~> 13.3)
   rspec (~> 3.13)
