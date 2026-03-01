@@ -18,9 +18,7 @@ module AdventOfCode
 
         # Build ranges from the seed data
         def seed_ranges
-          @seeds.map(&:to_i).each_slice(2).flat_map do |range|
-            (range[0]...(range[0] + range[1]))
-          end
+          @seeds.map(&:to_i).each_slice(2).flat_map { it[0]...(it[0] + it[1]) }
         end
 
         def translate_range(map, range)

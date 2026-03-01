@@ -46,7 +46,7 @@ module AdventOfCode
         end
 
         def count_cards(hand)
-          hand.chars.group_by { it }.transform_values(&:count)
+          hand.chars.tally
         end
 
         def sort_hands(hand1, hand2)
