@@ -9,4 +9,4 @@ gem "matrix", "~> 0.4.3"
 gem "rake", "~> 13.4"
 gem "rspec", "~> 3.13"
 gem "rubocop-rickselby", "~> 0.69", require: false
-gem "zeitwerk", "~> 2.7"
+gem "zeitwerk", "~> 2.8"

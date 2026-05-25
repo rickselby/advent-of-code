@@ -172,7 +172,7 @@ GEM
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
     uri (1.1.1)
-    zeitwerk (2.7.5)
+    zeitwerk (2.8.1)
 
 PLATFORMS
   x86_64-linux
@@ -185,7 +185,7 @@ DEPENDENCIES
   rake (~> 13.4)
   rspec (~> 3.13)
   rubocop-rickselby (~> 0.69)
-  zeitwerk (~> 2.7)
+  zeitwerk (~> 2.8)
 
 BUNDLED WITH
   4.0.11
