@@ -83,7 +83,7 @@ module AdventOfCode
         end
 
         def clash?(block)
-          block.any? { @cubes.include? it }
+          block.intersect?(@cubes)
         end
 
         def try_disintegrate
