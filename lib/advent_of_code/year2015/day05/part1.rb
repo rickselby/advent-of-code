@@ -10,7 +10,7 @@ module AdventOfCode
         end
 
         def nice?(string)
-          return false if %w[ab cd pq xy].intersect?(string)
+          return false if %w[ab cd pq xy].any? { string.include? it } # rubocop:disable Style/ArrayIntersect -- one is a string
           return false unless string.match?(/(.)\1/)
 
           string.scan(/[aeiou]/).size >= 3
