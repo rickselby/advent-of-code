@@ -31,7 +31,7 @@
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.15.2, RVM: ruby-4.0.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.21.1, RVM: ruby-4.0.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.6, RVM: ruby-4.0.5) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="lefthook (v2.1.9, RVM: ruby-4.0.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="lefthook (v2.1.10, RVM: ruby-4.0.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="lint_roller (v1.1.0, RVM: ruby-4.0.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="logger (v1.7.0, RVM: ruby-4.0.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.25.1, RVM: ruby-4.0.5) [gem]" level="application" />
