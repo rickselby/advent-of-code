@@ -83,7 +83,7 @@ module AdventOfCode
         end
 
         def clash?(block)
-          block.any? { @cubes.include? it } # rubocop:disable Style/ArrayIntersect -- one is a set
+          block.any? { @cubes.include? it }
         end
 
         def try_disintegrate
