@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gem "benchmark", "~> 0.5.0"
 gem "bundler-audit", "~> 0.9"
-gem "lefthook", "~> 2.1"
+gem "lefthook", "~> 2.2"
 gem "matrix", "~> 0.4.3"
 gem "rake", "~> 13.4"
 gem "rspec", "~> 3.13"
